@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,12 +210,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -223,21 +217,81 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#legacy-rest-api" class="toc-h2 toc-link" data-title="Legacy REST API">Legacy REST API</a>
+                  </li>
+                  <li>
+                    <a href="#http-request-endpoint" class="toc-h2 toc-link" data-title="HTTP Request Endpoint">HTTP Request Endpoint</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#queries" class="toc-h1 toc-link" data-title="Queries">Queries</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#devices" class="toc-h2 toc-link" data-title="Devices">Devices</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#smart-batteries" class="toc-h2 toc-link" data-title="Smart Batteries">Smart Batteries</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
+                  </li>
+                  <li>
+                    <a href="#device-stats" class="toc-h2 toc-link" data-title="Device Stats">Device Stats</a>
+                  </li>
+                  <li>
+                    <a href="#ping" class="toc-h2 toc-link" data-title="Ping">Ping</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
+          </li>
+          <li>
+            <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
+          </li>
+          <li>
+            <a href="#types" class="toc-h1 toc-link" data-title="Types">Types</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#timestamp" class="toc-h2 toc-link" data-title="Timestamp">Timestamp</a>
+                  </li>
+                  <li>
+                    <a href="#gps" class="toc-h2 toc-link" data-title="GPS">GPS</a>
+                  </li>
+                  <li>
+                    <a href="#devicedischarge" class="toc-h2 toc-link" data-title="DeviceDischarge">DeviceDischarge</a>
+                  </li>
+                  <li>
+                    <a href="#sim" class="toc-h2 toc-link" data-title="Sim">Sim</a>
+                  </li>
+                  <li>
+                    <a href="#pageinfo" class="toc-h2 toc-link" data-title="PageInfo">PageInfo</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#scenarios" class="toc-h1 toc-link" data-title="Scenarios">Scenarios</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-devices-with-pagination" class="toc-h2 toc-link" data-title="List devices with pagination">List devices with pagination</a>
+                  </li>
+                  <li>
+                    <a href="#list-devices-with-pagination-next-page" class="toc-h2 toc-link" data-title="List devices with pagination, next page">List devices with pagination, next page</a>
+                  </li>
+                  <li>
+                    <a href="#get-devices-within-gps-coordinates" class="toc-h2 toc-link" data-title="Get devices within GPS coordinates">Get devices within GPS coordinates</a>
+                  </li>
+                  <li>
+                    <a href="#get-devices-with-high-battery-discharge" class="toc-h2 toc-link" data-title="Get devices with high battery discharge">Get devices with high battery discharge</a>
+                  </li>
+                  <li>
+                    <a href="#get-devices-with-failing-batteries" class="toc-h2 toc-link" data-title="Get devices with failing batteries">Get devices with failing batteries</a>
                   </li>
               </ul>
           </li>
@@ -246,7 +300,6 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -254,185 +307,390 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p><strong>API endpoint</strong></p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight plaintext"><code>https://api.elemez.com/graphql
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>All queries executed against the api are sent as <code>POST</code> requests.<br>
+We recommend <a href="https://insomnia.rest">Insomnia.rest</a> to exercise our API</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Welcome to the Elemez API Documentation! You can use this API to fetch data from the Elemez system for use in your own applications.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>The API uses <a href="https://graphql.org">GraphQL</a> syntax.<br>
+If you are unfamiliar with this type of API we recommend following the link to the <a href="https://graphql.org">documentation</a>.</p>
+<h3 id='legacy-rest-api'>Legacy REST API</h3>
+<p>For our legacy REST api please visit <a href="http://docs.elemez.com">http://docs.elemez.com</a> for details</p>
+<h2 id='http-request-endpoint'>HTTP Request Endpoint</h2>
+<p><code>POST https://api.elemez.com/graphql</code></p>
+<h1 id='authentication'>Authentication</h1>
+<p>Elemez uses API keys to allow access to the API. You can find your personal API token from the World Settings in the <a href="https://elemez.com/world/settings">Elemez Portal</a></p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>Elemez expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>token: your-api-token</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>your-api-token</code> with your personal API key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<h1 id='queries'>Queries</h1><h2 id='devices'>Devices</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<pre class="highlight plaintext"><code>query myQuery($variable: Boolean) {
+  devices(limit: 2) {
+    nodes {
+      model
+      manufacturer
+      averageDischarge
+    }
+  }
+}
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above query returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>Some information about the devices query here...</p>
+<h3 id='available-fields'>Available Fields</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>unique device identifier</td>
+</tr>
+<tr>
+<td><code>imei</code></td>
+<td><code>string</code></td>
+<td>the IMEI</td>
+</tr>
+<tr>
+<td><code>mac</code></td>
+<td><code>string</code></td>
+<td>Devics MAC Address</td>
+</tr>
+<tr>
+<td><code>serialNumber</code></td>
+<td><code>string</code></td>
+<td>Devices Serial Number</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td><code>string</code></td>
+<td>Model numbel</td>
+</tr>
+<tr>
+<td><code>manufacturer</code></td>
+<td><code>string</code></td>
+<td>Manufacturer name</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td><a href="#timestamp">timestamp</a></td>
+<td>Timestamp in milliseconds when device last send data</td>
+</tr>
+<tr>
+<td><code>firstSeen</code></td>
+<td><a href="#timestamp">timestamp</a></td>
+<td>Timestamp in milliseconds when device was initially enrolled</td>
+</tr>
+<tr>
+<td><code>clientVersion</code></td>
+<td><code>number</code></td>
+<td>Elemez agent version code</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><code>[string]</code></td>
+<td>Array of group names the device currently belongs to</td>
+</tr>
+<tr>
+<td><code>averageDischarge</code></td>
+<td><code>float</code></td>
+<td>The average discharge over the last 30 days</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td><a href="#gps">GPS</a></td>
+<td>GPS..</td>
+</tr>
+<tr>
+<td><code>smartBattery</code></td>
+<td><a href="#smartbattery">SmartBattery</a></td>
+<td>Smart battery information</td>
+</tr>
+<tr>
+<td><code>sim</code></td>
+<td><a href="#sim">Sim</a></td>
+<td>Sim card details</td>
+</tr>
+<tr>
+<td><code>batteryDischarge</code></td>
+<td><a href="#devicedischarge">DeviceDischarge</a></td>
+<td>Battery discharge information</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<p><a href="#device">Device</a></p>
+<h2 id='smart-batteries'>Smart Batteries</h2><h3 id='available-fields-2'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Unique smart battery ID</td>
+</tr>
+<tr>
+<td><code>partNumber</code></td>
+<td><code>string</code></td>
+<td>The part number as given by the battery</td>
+</tr>
+<tr>
+<td><code>serialNumber</code></td>
+<td><code>string</code></td>
+<td>The battery serial number</td>
+</tr>
+<tr>
+<td><code>persentCapacity</code></td>
+<td><code>number</code></td>
+<td>The present capacity in <code>mah</code> of the battery</td>
+</tr>
+<tr>
+<td><code>ratedCapacity</code></td>
+<td><code>number</code></td>
+<td>The rated capacity in <code>mah</code> of the battery</td>
+</tr>
+<tr>
+<td><code>manfactureDate</code></td>
+<td><code>string</code></td>
+<td>The manufactured date as given by the battery</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>When the smart battery laste updated its information</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td><a href="#devices">Device</a></td>
+<td>The device associated with the smart battery</td>
+</tr>
+</tbody></table>
+<h2 id='groups'>Groups</h2><h2 id='device-stats'>Device Stats</h2><h2 id='ping'>Ping</h2><h1 id='pagination'>Pagination</h1><h1 id='filtering'>Filtering</h1><h1 id='types'>Types</h1><h2 id='timestamp'>Timestamp</h2>
+<p>Unix Timestamp in milliseconds returned as a number</p>
+<h2 id='gps'>GPS</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>latitude</code></td>
+<td><code>float</code></td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td><code>float</code></td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>gps point</code></td>
+<td>Concatenated latitude &amp; longitide. <code>51.61492, -1.311916</code></td>
+</tr>
+<tr>
+<td><code>accuracy</code></td>
+<td><code>number</code></td>
+<td>Accuracy in meters of the given coordinates</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>When the GPS coordinates where collected</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>Method of collection eg: <code>gps</code> <code>cellular</code> <code>fused</code></td>
+</tr>
+<tr>
+<td><code>utc</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>When the GPS coordinates were sent to the server</td>
+</tr>
+</tbody></table>
+<h2 id='devicedischarge'>DeviceDischarge</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>date</code></td>
+<td><code>string</code></td>
+<td><code>YYYY-MM-DD</code> date format</td>
+</tr>
+<tr>
+<td><code>average</code></td>
+<td><code>number</code></td>
+<td>The devices average discharge</td>
+</tr>
+</tbody></table>
+<h2 id='sim'>Sim</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>serialNumber</code></td>
+<td><code>string</code></td>
+<td>The Sim card serial number</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td><a href="#device">Device</a></td>
+<td>The device associated with the sim card</td>
+</tr>
+</tbody></table>
+<h2 id='pageinfo'>PageInfo</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>hasNextPage</code></td>
+<td><code>boolean</code></td>
+<td>Is there another page in the pagination series</td>
+</tr>
+<tr>
+<td><code>endCursor</code></td>
+<td><code>string</code></td>
+<td>The identifier for the <code>after</code> query parameter when paginating</td>
+</tr>
+</tbody></table>
+<h1 id='scenarios'>Scenarios</h1><h2 id='list-devices-with-pagination'>List devices with pagination</h2><pre class="highlight plaintext"><code>devices(limit: 2) {
+  nodes {
+    id
+    manufacturer
+    model
+  }
+  pageInfo {
+    hasNextPage
+    endCursor
+  }
+}
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above query returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wsxcvhfdrtgbdertgt73d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bvghjiuhgvfr67890okjh"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MTRkNTFkNWE1ZTJhMjUyZTliZTg2NTc3ZmMyNWIzMGI="</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
+<p>This query demonstrates how to paginate through results from the API.</p>
+<h2 id='list-devices-with-pagination-next-page'>List devices with pagination, next page</h2><pre class="highlight plaintext"><code>devices(limit: 2 from: "MTRkNTFkNWE1ZTJhMjUyZTliZTg2NTc3ZmMyNWIzMGI=") {
+  nodes {
+    id
+    manufacturer
+    model
+  }
+  pageInfo {
+    hasNextPage
+    endCursor
+  }
+}
+</code></pre>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mnbvftyujbvfr678iu"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hgjtyuiuy6trgd6782"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZDRlNjFkOWZkMDUxY2ZlNGViNThmMThiMTU5ZWI4OWE="</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2><h2 id='get-devices-with-high-battery-discharge'>Get devices with high battery discharge</h2><h2 id='get-devices-with-failing-batteries'>Get devices with failing batteries</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
@@ -493,12 +751,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
