@@ -310,8 +310,8 @@
 <blockquote>
 <p><strong>API endpoint</strong></p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://api.elemez.com/graphql
-</code></pre>
+<div class="highlight"><pre class="highlight plaintext"><code>https://api.elemez.com/graphql
+</code></pre></div>
 <blockquote>
 <p>All queries executed against the api are sent as <code>POST</code> requests.<br>
 We recommend <a href="https://insomnia.rest">Insomnia.rest</a> to exercise our API</p>
@@ -339,20 +339,20 @@ You must replace <code>your-api-token</code> with your personal API key.
 <blockquote>
 <p><code>POST</code> https://api.elemez.com/graphql</p>
 </blockquote>
-<pre class="highlight plaintext"><code>query myQuery($variable: Boolean) {
-  devices(limit: 2) {
-    nodes {
-      model
-      manufacturer
-      averageDischarge
-    }
-  }
-}
-</code></pre>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+      </span><span class="n">manufacturer</span><span class="w">
+      </span><span class="n">averageDischarge</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -370,7 +370,7 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Some information about the devices query here...</p>
 <h3 id='available-fields'>Available Fields</h3>
 <table><thead>
@@ -610,22 +610,24 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The identifier for the <code>after</code> query parameter when paginating</td>
 </tr>
 </tbody></table>
-<h1 id='scenarios'>Scenarios</h1><h2 id='list-devices-with-pagination'>List devices with pagination</h2><pre class="highlight plaintext"><code>devices(limit: 2) {
-  nodes {
-    id
-    manufacturer
-    model
-  }
-  pageInfo {
-    hasNextPage
-    endCursor
-  }
-}
-</code></pre>
+<h1 id='scenarios'>Scenarios</h1><h2 id='list-devices-with-pagination'>List devices with pagination</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">manufacturer</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">pageInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">hasNextPage</span><span class="w">
+      </span><span class="n">endCursor</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -649,24 +651,26 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This query demonstrates how to paginate through results from the API.</p>
-<h2 id='list-devices-with-pagination-next-page'>List devices with pagination, next page</h2><pre class="highlight plaintext"><code>devices(limit: 2 from: "MTRkNTFkNWE1ZTJhMjUyZTliZTg2NTc3ZmMyNWIzMGI=") {
-  nodes {
-    id
-    manufacturer
-    model
-  }
-  pageInfo {
-    hasNextPage
-    endCursor
-  }
-}
-</code></pre>
+<h2 id='list-devices-with-pagination-next-page'>List devices with pagination, next page</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="s2">"MTRkNTFkNWE1ZTJhMjUyZTliZTg2NTc3ZmMyNWIzMGI="</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">manufacturer</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">pageInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">hasNextPage</span><span class="w">
+      </span><span class="n">endCursor</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -690,7 +694,7 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2><h2 id='get-devices-with-high-battery-discharge'>Get devices with high battery discharge</h2><h2 id='get-devices-with-failing-batteries'>Get devices with failing batteries</h2><h1 id='errors'>Errors</h1>
+</span></code></pre></div><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2><h2 id='get-devices-with-high-battery-discharge'>Get devices with high battery discharge</h2><h2 id='get-devices-with-failing-batteries'>Get devices with failing batteries</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
