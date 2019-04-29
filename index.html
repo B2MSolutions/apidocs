@@ -256,6 +256,9 @@
                     <a href="#timestamp" class="toc-h2 toc-link" data-title="Timestamp">Timestamp</a>
                   </li>
                   <li>
+                    <a href="#status" class="toc-h2 toc-link" data-title="Status">Status</a>
+                  </li>
+                  <li>
                     <a href="#gps" class="toc-h2 toc-link" data-title="GPS">GPS</a>
                   </li>
                   <li>
@@ -451,6 +454,26 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td><code>impactDetection</code></td>
 <td><a href="#impactdetection">ImpactDetection</a></td>
 <td>Impact detection information</td>
+</tr>
+<tr>
+<td><code>deviceStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Rollup of all status fields</td>
+</tr>
+<tr>
+<td><code>deviceLocationStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Rollup of location status fields</td>
+</tr>
+<tr>
+<td><code>deviceUtilisationStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Rollup of utilisation status fields</td>
+</tr>
+<tr>
+<td><code>deviceUserExperienceStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Rollup of user experience status fields</td>
 </tr>
 </tbody></table>
 <h2 id='smart-batteries'>Smart Batteries</h2>
@@ -671,6 +694,8 @@ You must replace <code>your-api-token</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='types'>Types</h1><h2 id='timestamp'>Timestamp</h2>
 <p>Unix Timestamp in milliseconds returned as a number</p>
+<h2 id='status'>Status</h2>
+<p>Elemez status value returned as <code>red</code> <code>yellow</code> <code>green</code></p>
 <h2 id='gps'>GPS</h2>
 <table><thead>
 <tr>
