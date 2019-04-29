@@ -238,10 +238,13 @@
                   <li>
                     <a href="#smart-batteries" class="toc-h2 toc-link" data-title="Smart Batteries">Smart Batteries</a>
                   </li>
+                  <li>
+                    <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
+                  </li>
+                  <li>
+                    <a href="#device-stats" class="toc-h2 toc-link" data-title="Device Stats">Device Stats</a>
+                  </li>
               </ul>
-          </li>
-          <li>
-            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
           </li>
           <li>
             <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
@@ -251,9 +254,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#timestamp" class="toc-h2 toc-link" data-title="Timestamp">Timestamp</a>
-                  </li>
-                  <li>
-                    <a href="#status" class="toc-h2 toc-link" data-title="Status">Status</a>
                   </li>
                   <li>
                     <a href="#gps" class="toc-h2 toc-link" data-title="GPS">GPS</a>
@@ -279,24 +279,18 @@
             <a href="#scenarios" class="toc-h1 toc-link" data-title="Scenarios">Scenarios</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-devices-within-gps-coordinates" class="toc-h2 toc-link" data-title="Get devices within GPS coordinates">Get devices within GPS coordinates</a>
+                  </li>
+                  <li>
+                    <a href="#get-devices-dropped-more-than-50-times" class="toc-h2 toc-link" data-title="Get Devices dropped more than 50 times">Get Devices dropped more than 50 times</a>
+                  </li>
+                  <li>
                     <a href="#list-devices-with-pagination" class="toc-h2 toc-link" data-title="List devices with pagination">List devices with pagination</a>
                   </li>
                   <li>
                     <a href="#list-devices-with-pagination-next-page" class="toc-h2 toc-link" data-title="List devices with pagination, next page">List devices with pagination, next page</a>
                   </li>
-                  <li>
-                    <a href="#get-devices-within-gps-coordinates" class="toc-h2 toc-link" data-title="Get devices within GPS coordinates">Get devices within GPS coordinates</a>
-                  </li>
-                  <li>
-                    <a href="#get-devices-with-high-battery-discharge" class="toc-h2 toc-link" data-title="Get devices with high battery discharge">Get devices with high battery discharge</a>
-                  </li>
-                  <li>
-                    <a href="#get-devices-with-failing-batteries" class="toc-h2 toc-link" data-title="Get devices with failing batteries">Get devices with failing batteries</a>
-                  </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -345,9 +339,6 @@ You must replace <code>your-api-token</code> with your personal API key.
       </span><span class="n">model</span><span class="w">
       </span><span class="n">manufacturer</span><span class="w">
       </span><span class="n">averageDischarge</span><span class="w">
-      </span><span class="n">location</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">position</span><span class="w">
-      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -359,27 +350,21 @@ You must replace <code>your-api-token</code> with your personal API key.
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.938339,-1.126821"</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This allows you to return a list of devices with the following fields available for retrieval and filtering</p>
-<h3 id='available-fields'>Available Fields</h3>
+</span></code></pre></div><h3 id='available-fields'>Available Fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -445,11 +430,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <tr>
 <td><code>location</code></td>
 <td><a href="#gps">GPS</a></td>
-<td>Device location</td>
+<td>GPS..</td>
 </tr>
 <tr>
 <td><code>smartBattery</code></td>
-<td><a href="#smartbattery">SmartBattery</a></td>
+<td><a href="#smart-batteries">SmartBattery</a></td>
 <td>Smart battery information</td>
 </tr>
 <tr>
@@ -467,28 +452,52 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td><a href="#impactdetection">ImpactDetection</a></td>
 <td>Impact detection information</td>
 </tr>
-<tr>
-<td><code>deviceStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of all status fields</td>
-</tr>
-<tr>
-<td><code>deviceLocationStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of location status fields</td>
-</tr>
-<tr>
-<td><code>deviceUtilisationStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of utilisation status fields</td>
-</tr>
-<tr>
-<td><code>deviceUserExperienceStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of user experience status fields</td>
-</tr>
 </tbody></table>
-<h2 id='smart-batteries'>Smart Batteries</h2><h3 id='available-fields-2'>Available Fields</h3>
+<h2 id='smart-batteries'>Smart Batteries</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">smartbatteries</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">partNumber</span><span class="w">
+      </span><span class="n">capacityFactor</span><span class="w">
+      </span><span class="n">device</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">manufacturer</span><span class="w">
+        </span><span class="n">model</span><span class="w">
+      </span><span class="p">}</span><span class="w"> 
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"partNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A7654"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"capacityFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.94</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zebra Technologies"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TC75x"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"partNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A8871"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"capacityFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.40</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zebra Technologies"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TC75x"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='available-fields-2'>Available Fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -512,7 +521,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The battery serial number</td>
 </tr>
 <tr>
-<td><code>persentCapacity</code></td>
+<td><code>presentCapacity</code></td>
 <td><code>number</code></td>
 <td>The present capacity in <code>mah</code> of the battery</td>
 </tr>
@@ -522,6 +531,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The rated capacity in <code>mah</code> of the battery</td>
 </tr>
 <tr>
+<td><code>capacityFactor</code></td>
+<td><code>float</code></td>
+<td>Health percentage based on <code>presentCapacity</code> and <code>ratedCapacity</code></td>
+</tr>
+<tr>
 <td><code>manfactureDate</code></td>
 <td><code>string</code></td>
 <td>The manufactured date as given by the battery</td>
@@ -529,7 +543,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 <tr>
 <td><code>updated</code></td>
 <td><a href="#timestamp">Timestamp</a></td>
-<td>When the smart battery laste updated its information</td>
+<td>When the smart battery last updated its information</td>
 </tr>
 <tr>
 <td><code>device</code></td>
@@ -537,10 +551,126 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The device associated with the smart battery</td>
 </tr>
 </tbody></table>
-<h1 id='pagination'>Pagination</h1><h1 id='filtering'>Filtering</h1><h1 id='types'>Types</h1><h2 id='timestamp'>Timestamp</h2>
+<h2 id='groups'>Groups</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deviceStats</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">count</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB-OX1"</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB-RG17"</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB-GL7"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='available-fields-3'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Group name</td>
+</tr>
+</tbody></table>
+<h2 id='device-stats'>Device Stats</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deviceStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">count</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"deviceStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12861</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns the count of devices matched by the given query</p>
+<h1 id='filtering'>Filtering</h1>
+<blockquote>
+<p>Exact Match; get devices in the <code>group</code> <code>uk</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+      </span><span class="n">group</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>OR; get devices in the <code>group</code> <code>uk</code> OR <code>france</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"uk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"france"</span><span class="p">]</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+      </span><span class="n">group</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>AND; get devices in the <code>group</code> <code>uk</code> AND <code>model</code> <code>TC75</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"model"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"TC75"</span><span class="p">}])</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+      </span><span class="n">group</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Operators; get devices with <code>averageDischarge</code> greater than or equal <code>30%</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"averageDischarge"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gte</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+      </span><span class="n">group</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='types'>Types</h1><h2 id='timestamp'>Timestamp</h2>
 <p>Unix Timestamp in milliseconds returned as a number</p>
-<h2 id='status'>Status</h2>
-<p>Elemez status value returned as <code>red|yellow|green</code></p>
 <h2 id='gps'>GPS</h2>
 <table><thead>
 <tr>
@@ -632,22 +762,22 @@ You must replace <code>your-api-token</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>count</td>
+<td><code>count</code></td>
 <td><code>number</code></td>
-<td>Total number of impacts</td>
+<td>Total number of drops</td>
 </tr>
 <tr>
-<td>lastOccurance</td>
+<td><code>lastOccurance</code></td>
 <td><a href="#timestamp">Timestamp</a></td>
-<td>Last occurance of an impact</td>
+<td>Last occurance of a drop or forceful impact</td>
 </tr>
 <tr>
-<td>drops</td>
+<td><code>drops</code></td>
 <td><a href="#impactinformation">ImpactInformation</a></td>
-<td>Information on drop count</td>
+<td>Information on the drop count</td>
 </tr>
 <tr>
-<td>forcefulImpacts</td>
+<td><code>forcefulImpact</code></td>
 <td><a href="#impactinformation">ImpactInformation</a></td>
 <td>Information on forceful impacts</td>
 </tr>
@@ -661,12 +791,12 @@ You must replace <code>your-api-token</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>count</td>
+<td><code>count</code></td>
 <td><code>number</code></td>
 <td>Total number detected</td>
 </tr>
 <tr>
-<td>lastOccurance</td>
+<td><code>lastOccurance</code></td>
 <td><a href="#timestamp">Timestamp</a></td>
 <td>Last occurance timestamp</td>
 </tr>
@@ -690,7 +820,36 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The identifier for the <code>after</code> query parameter when paginating</td>
 </tr>
 </tbody></table>
-<h1 id='scenarios'>Scenarios</h1><h2 id='list-devices-with-pagination'>List devices with pagination</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='scenarios'>Scenarios</h1><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2>
+<blockquote>
+<p>Devices within 100 meters of GPS Point <code>51.667789, -1.310762</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"location.position"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.667789, -1.310762 / 100m"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">group</span><span class="w"> 
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='get-devices-dropped-more-than-50-times'>Get Devices dropped more than 50 times</h2>
+<blockquote>
+<p>Devices with total drop count more than 50, ordered by drop count descending</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"impactDetection.count"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gt</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"impactDetection.count"</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">desc</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">impactDetection</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">lastOccurance</span><span class="w">
+        </span><span class="n">count</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='list-devices-with-pagination'>List devices with pagination</h2>
+<p>Request the first &amp; second page of devices</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
@@ -774,55 +933,7 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2><h2 id='get-devices-with-high-battery-discharge'>Get devices with high battery discharge</h2><h2 id='get-devices-with-failing-batteries'>Get devices with failing batteries</h2><h1 id='errors'>Errors</h1>
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-
+</span></code></pre></div>
       </div>
       <div class="dark-box">
       </div>
