@@ -10,7 +10,6 @@ includes:
   - filtering
   - types
   - scenarios
-  - errors
 
 search: true
 ---

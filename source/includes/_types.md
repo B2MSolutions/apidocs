@@ -26,6 +26,22 @@ Unix Timestamp in milliseconds returned as a number
 | `serialNumber` | `string`          | The Sim card serial number              |
 | `device`       | [Device](#device) | The device associated with the sim card |
 
+## ImpactDetection
+
+| Field          | Type              | Description                             |
+| -----          | ----              | -----------                             |
+| `count` | `number`          | Total number of drops              |
+| `lastOccurance`       | [Timestamp](#timestamp) | Last occurance of a drop or forceful impact |
+| `drops` | [ImpactInformation](#impactinformation)|Information on the drop count |
+| `forcefulImpact` | [ImpactInformation](#impactinformation)|Information on forceful impacts |
+
+
+## ImpactInformation
+| Field          | Type              | Description                             |
+| -----          | ----              | -----------                             |
+| `count` | `number`          | Total number detected              |
+| `lastOccurance`       | [Timestamp](#timestamp) | Last occurance timestamp |
+
 ## PageInfo
 | Field | Type | Description
 |------|-----|------

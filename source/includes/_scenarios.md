@@ -1,6 +1,42 @@
 
 # Scenarios
+
+## Get devices within GPS coordinates
+
+> Devices within 100 meters of GPS Point `51.667789, -1.310762`
+
+```graphql
+query {
+  devices(filter: { field: "location.position", value: "51.667789, -1.310762 / 100m" }) {
+    nodes {
+      serialNumber
+      group 
+    }
+  }
+}
+```
+
+## Get Devices dropped more than 50 times
+
+> Devices with total drop count more than 50, ordered by drop count descending
+
+```graphql
+query {
+  devices(filter: { field: "impactDetection.count" value: 50 operator: gt } sort: { field: "impactDetection.count" order: desc}) {
+    nodes {
+      serialNumber
+      impactDetection {
+        lastOccurance
+        count
+      }
+    }
+  }
+}
+```
+
 ## List devices with pagination
+Request the first & second page of devices
+
 ```graphql
 query {
   devices(limit: 2) {
@@ -93,9 +129,3 @@ query {
   }
 }
 ```
-
-## Get devices within GPS coordinates
-
-## Get devices with high battery discharge
-
-## Get devices with failing batteries
