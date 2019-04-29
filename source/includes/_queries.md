@@ -58,6 +58,10 @@ query {
 | `sim`              | [Sim](#sim)                         | Sim card details                                             |
 | `batteryDischarge` | [DeviceDischarge](#devicedischarge) | Battery discharge information                                |
 | `impactDetection`  | [ImpactDetection](#impactdetection) | Impact detection information |
+| `deviceStatus` | [Status](#status) | Rollup of all status fields |
+| `deviceLocationStatus` | [Status](#status) | Rollup of location status fields |
+| `deviceUtilisationStatus` | [Status](#status) | Rollup of utilisation status fields |
+| `deviceUserExperienceStatus` | [Status](#status) | Rollup of user experience status fields |
 
 ## Smart Batteries
 

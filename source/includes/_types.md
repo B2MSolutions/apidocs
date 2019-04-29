@@ -3,6 +3,10 @@
 ## Timestamp
 Unix Timestamp in milliseconds returned as a number
 
+## Status
+
+Elemez status value returned as `red` `yellow` `green`
+
 ## GPS
 | Field       | Type                    | Description                                                   |
 | -----       | ----                    | -----------                                                   |
@@ -43,9 +47,9 @@ Unix Timestamp in milliseconds returned as a number
 | `lastOccurance`       | [Timestamp](#timestamp) | Last occurance timestamp |
 
 ## PageInfo
-| Field | Type | Description
-|------|-----|------
-|`hasNextPage`|`boolean`|Is there another page in the pagination series
-|`endCursor`|`string`|The identifier for the `after` query parameter when paginating
+| Field | Type | Description|
+|------|-----|------|
+|`hasNextPage`|`boolean`|Is there another page in the pagination series|
+|`endCursor`|`string`|The identifier for the `after` query parameter when paginating|
 
 
