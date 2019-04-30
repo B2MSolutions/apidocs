@@ -1,10 +1,13 @@
 # Filter
 
 ## Input Fields
-| Field   | Type                | Description                         |
-| --      | --                  | --                                  |
-| `field` | `string`            | Field name as defined in the object |
-| `value` | `string/[string]`   | File value                          |
+| Field      | Type                  | Description                         |
+| --         | --                    | --                                  |
+| `field`    | `string`              | Field name as defined in the object |
+| `value`    | `string/[string]`     | Field value                         |
+| `operator` | [Operator](#operator) | Operator value                      |
+
+## `EQUAL`
 
 > Exact Match; get devices in the `group` `uk`
 
@@ -20,7 +23,9 @@
 }
 ```
 
-> OR; get devices in the `group` `uk` OR `france`
+## `OR`
+
+> OR: get devices in the `group` `uk` OR `france`
 
 ```graphql
 {
@@ -34,7 +39,8 @@
 }
 ```
 
-> AND; get devices in the `group` `uk` AND `model` `TC75`
+## `AND`
+> AND: get devices in the `group` `uk` AND `model` `TC75`
 
 ```graphql
 {
@@ -48,7 +54,7 @@
 }
 ```
 
-> Operators; get devices with `averageDischarge` greater than or equal `30%`
+> Operators: get devices with `averageDischarge` greater than or equal `30%`
 
 ```graphql
 {

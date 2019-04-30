@@ -51,3 +51,17 @@ Elemez status value returned as `red` `yellow` `green`
 |---------------|-----------|----------------------------------------------------------------|
 | `hasNextPage` | `boolean` | Is there another page in the pagination series                 |
 | `endCursor`   | `string`  | The identifier for the `after` query parameter when paginating |
+
+## Operator
+| Operator  | Description               |
+| --        | --                        |
+| `eq`      | Equal                     |
+| `lt`      | Less than                 |
+| `lte`     | Less than or Equal        |
+| `gt`      | Greater than              |
+| `gte`     | Greater than or Equal     |
+| `not_eq`  | Not equal                 |
+| `not_lt`  | Not less than             |
+| `not_lte` | Not less than or equal    |
+| `not_gt`  | Not greater than          |
+| `not_gte` | Not greater than or equal |
