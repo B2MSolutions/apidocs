@@ -263,6 +263,15 @@
                   <li>
                     <a href="#input-fields" class="toc-h2 toc-link" data-title="Input Fields">Input Fields</a>
                   </li>
+                  <li>
+                    <a href="#equal" class="toc-h2 toc-link" data-title="EQUAL"><code>EQUAL</code></a>
+                  </li>
+                  <li>
+                    <a href="#or" class="toc-h2 toc-link" data-title="OR"><code>OR</code></a>
+                  </li>
+                  <li>
+                    <a href="#and" class="toc-h2 toc-link" data-title="AND"><code>AND</code></a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -291,6 +300,9 @@
                   </li>
                   <li>
                     <a href="#pageinfo" class="toc-h2 toc-link" data-title="PageInfo">PageInfo</a>
+                  </li>
+                  <li>
+                    <a href="#operator" class="toc-h2 toc-link" data-title="Operator">Operator</a>
                   </li>
               </ul>
           </li>
@@ -879,10 +891,15 @@ You must replace <code>your-api-token</code> with your personal API key.
 <tr>
 <td><code>value</code></td>
 <td><code>string/[string]</code></td>
-<td>File value</td>
+<td>Field value</td>
+</tr>
+<tr>
+<td><code>operator</code></td>
+<td><a href="#operator">Operator</a></td>
+<td>Operator value</td>
 </tr>
 </tbody></table>
-
+<h2 id='equal'><code>EQUAL</code></h2>
 <blockquote>
 <p>Exact Match; get devices in the <code>group</code> <code>uk</code></p>
 </blockquote>
@@ -895,9 +912,9 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h2 id='or'><code>OR</code></h2>
 <blockquote>
-<p>OR; get devices in the <code>group</code> <code>uk</code> OR <code>france</code></p>
+<p>OR: get devices in the <code>group</code> <code>uk</code> OR <code>france</code></p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"uk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"france"</span><span class="p">]</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -908,9 +925,9 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h2 id='and'><code>AND</code></h2>
 <blockquote>
-<p>AND; get devices in the <code>group</code> <code>uk</code> AND <code>model</code> <code>TC75</code></p>
+<p>AND: get devices in the <code>group</code> <code>uk</code> AND <code>model</code> <code>TC75</code></p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"model"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"TC75"</span><span class="p">}])</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -923,7 +940,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>Operators; get devices with <code>averageDischarge</code> greater than or equal <code>30%</code></p>
+<p>Operators: get devices with <code>averageDischarge</code> greater than or equal <code>30%</code></p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"averageDischarge"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gte</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1085,6 +1102,54 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td><code>endCursor</code></td>
 <td><code>string</code></td>
 <td>The identifier for the <code>after</code> query parameter when paginating</td>
+</tr>
+</tbody></table>
+<h2 id='operator'>Operator</h2>
+<table><thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>eq</code></td>
+<td>Equal</td>
+</tr>
+<tr>
+<td><code>lt</code></td>
+<td>Less than</td>
+</tr>
+<tr>
+<td><code>lte</code></td>
+<td>Less than or Equal</td>
+</tr>
+<tr>
+<td><code>gt</code></td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td><code>gte</code></td>
+<td>Greater than or Equal</td>
+</tr>
+<tr>
+<td><code>not_eq</code></td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td><code>not_lt</code></td>
+<td>Not less than</td>
+</tr>
+<tr>
+<td><code>not_lte</code></td>
+<td>Not less than or equal</td>
+</tr>
+<tr>
+<td><code>not_gt</code></td>
+<td>Not greater than</td>
+</tr>
+<tr>
+<td><code>not_gte</code></td>
+<td>Not greater than or equal</td>
 </tr>
 </tbody></table>
 <h1 id='scenarios'>Scenarios</h1><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2>
