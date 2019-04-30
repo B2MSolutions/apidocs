@@ -8,15 +8,15 @@ Unix Timestamp in milliseconds returned as a number
 Elemez status value returned as `red` `yellow` `green`
 
 ## GPS
-| Field       | Type                    | Description                                                   |
-| -----       | ----                    | -----------                                                   |
-| `latitude`  | `float`                 | Latitude                                                      |
-| `longitude` | `float`                 | Longitude                                                     |
-| `position`  | `gps point`             | Concatenated latitude &amp; longitide. `51.61492, -1.311916`  |
-| `accuracy`  | `number`                | Accuracy in meters of the given coordinates                   |
-| `time`      | [Timestamp](#timestamp) | When the GPS coordinates where collected                      |
-| `source`    | `string`                | Method of collection eg: `gps` `cellular` `fused`             |
-| `utc`       | [Timestamp](#timestamp) | When the GPS coordinates were sent to the server              |
+| Field       | Type                    | Description                                                  |
+| -----       | ----                    | -----------                                                  |
+| `latitude`  | `float`                 | Latitude                                                     |
+| `longitude` | `float`                 | Longitude                                                    |
+| `position`  | `gps point`             | Concatenated latitude &amp; longitide. `51.61492, -1.311916` |
+| `accuracy`  | `number`                | Accuracy in meters of the given coordinates                  |
+| `time`      | [Timestamp](#timestamp) | When the GPS coordinates where collected                     |
+| `source`    | `string`                | Method of collection eg: `gps` `cellular` `fused`            |
+| `utc`       | [Timestamp](#timestamp) | When the GPS coordinates were sent to the server             |
 
 ## DeviceDischarge
 | Field     | Type     | Description                   |
@@ -32,24 +32,22 @@ Elemez status value returned as `red` `yellow` `green`
 
 ## ImpactDetection
 
-| Field          | Type              | Description                             |
-| -----          | ----              | -----------                             |
-| `count` | `number`          | Total number of drops              |
-| `lastOccurance`       | [Timestamp](#timestamp) | Last occurance of a drop or forceful impact |
-| `drops` | [ImpactInformation](#impactinformation)|Information on the drop count |
-| `forcefulImpact` | [ImpactInformation](#impactinformation)|Information on forceful impacts |
+| Field            | Type                                    | Description                                 |
+| -----            | ----                                    | -----------                                 |
+| `count`          | `number`                                | Total number of drops                       |
+| `lastOccurance`  | [Timestamp](#timestamp)                 | Last occurance of a drop or forceful impact |
+| `drops`          | [ImpactInformation](#impactinformation) | Information on the drop count               |
+| `forcefulImpact` | [ImpactInformation](#impactinformation) | Information on forceful impacts             |
 
 
 ## ImpactInformation
-| Field          | Type              | Description                             |
-| -----          | ----              | -----------                             |
-| `count` | `number`          | Total number detected              |
-| `lastOccurance`       | [Timestamp](#timestamp) | Last occurance timestamp |
+| Field           | Type                    | Description              |
+| -----           | ----                    | -----------              |
+| `count`         | `number`                | Total number detected    |
+| `lastOccurance` | [Timestamp](#timestamp) | Last occurance timestamp |
 
 ## PageInfo
-| Field | Type | Description|
-|------|-----|------|
-|`hasNextPage`|`boolean`|Is there another page in the pagination series|
-|`endCursor`|`string`|The identifier for the `after` query parameter when paginating|
-
-
+| Field         | Type      | Description                                                    |
+|---------------|-----------|----------------------------------------------------------------|
+| `hasNextPage` | `boolean` | Is there another page in the pagination series                 |
+| `endCursor`   | `string`  | The identifier for the `after` query parameter when paginating |

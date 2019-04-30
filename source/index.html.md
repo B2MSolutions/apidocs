@@ -6,6 +6,7 @@ toc_footers:
 
 includes:
   - queries
+  - mutations
   - pagination
   - filtering
   - types

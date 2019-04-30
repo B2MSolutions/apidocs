@@ -1,0 +1,23 @@
+{
+  "name": "elemez-apidocs",
+  "version": "1.0.0",
+  "description": "### Run locally `bundle install`   `bundle exec middleman server`",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "install": "bundle install",
+    "start": "bundle exec middleman server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B2MSolutions/apidocs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B2MSolutions/apidocs/issues"
+  },
+  "homepage": "https://github.com/B2MSolutions/apidocs#readme"
+}

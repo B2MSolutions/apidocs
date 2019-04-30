@@ -1,4 +1,10 @@
-# Filtering
+# Filter
+
+## Input Fields
+| Field   | Type                | Description                         |
+| --      | --                  | --                                  |
+| `field` | `string`            | Field name as defined in the object |
+| `value` | `string/[string]`   | File value                          |
 
 > Exact Match; get devices in the `group` `uk`
 
