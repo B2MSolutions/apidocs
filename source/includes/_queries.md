@@ -188,3 +188,71 @@ query {
 ```
 
 Returns the count of devices matched by the given query
+
+
+## Home Locations
+> `POST` https://api.elemez.com/graphql
+
+```graphql
+query {
+  homeLocations {
+    nodes {
+      id
+      name
+      latitude
+      longitude
+      position
+      radius
+    }
+  }
+}
+```
+
+> The above query returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "homeLocations": {
+      "nodes": [
+        {
+          "id": "didcot",
+          "name": "Didcot, Oxfordshire",
+          "latitude": 51.608,
+          "longitude": -1.2448,
+          "position": "51.608, -1.2448",
+          "radius": 1000
+        },
+        {
+          "id": "london",
+          "name": "London",
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "position": "51.5074, -0.1278",
+          "radius": 5000
+        },
+        {
+          "id": "melbourne",
+          "name": "Melbourne",
+          "latitude": -37.8136,
+          "longitude": 144.9631,
+          "position": "-37.8136, 144.9631",
+          "radius": 1000
+        }
+      ]
+    }
+  }
+}
+```
+
+Returns a list of configured home locations
+
+### Available Fields
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `string` | Unique identifier |
+| `name` | `string` | Home location friendly name |
+| `latitude` | `float` | Latitude |
+| `longitude` | `float` | Longitude |
+| `position` | `gps point` | Concatenated latitude &amp; longitide. `51.61492, -1.311916` |
+| `radius` | `number` | Radius around the gps point in meters that defines the boundary of the home location |
