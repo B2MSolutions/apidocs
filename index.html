@@ -244,10 +244,26 @@
                   <li>
                     <a href="#device-stats" class="toc-h2 toc-link" data-title="Device Stats">Device Stats</a>
                   </li>
+                  <li>
+                    <a href="#home-locations" class="toc-h2 toc-link" data-title="Home Locations">Home Locations</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
+            <a href="#mutations" class="toc-h1 toc-link" data-title="Mutations">Mutations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#set-device-asset-tag" class="toc-h2 toc-link" data-title="Set Device Asset Tag">Set Device Asset Tag</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#filter" class="toc-h1 toc-link" data-title="Filter">Filter</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#input-fields" class="toc-h2 toc-link" data-title="Input Fields">Input Fields</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#types" class="toc-h1 toc-link" data-title="Types">Types</a>
@@ -406,6 +422,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>Manufacturer name</td>
 </tr>
 <tr>
+<td><code>assetTag</code></td>
+<td><code>string</code></td>
+<td>Asset tag</td>
+</tr>
+<tr>
 <td><code>updated</code></td>
 <td><a href="#timestamp">timestamp</a></td>
 <td>Timestamp in milliseconds when device last send data</td>
@@ -433,12 +454,17 @@ You must replace <code>your-api-token</code> with your personal API key.
 <tr>
 <td><code>location</code></td>
 <td><a href="#gps">GPS</a></td>
-<td>GPS..</td>
+<td>Last known location of the device</td>
 </tr>
 <tr>
 <td><code>smartBattery</code></td>
 <td><a href="#smart-batteries">SmartBattery</a></td>
-<td>Smart battery information</td>
+<td>First smart battery&#39;s information</td>
+</tr>
+<tr>
+<td><code>smartBatteries</code></td>
+<td>[<a href="#smart-batteries">SmartBattery</a>]</td>
+<td>All available smart battery information</td>
 </tr>
 <tr>
 <td><code>sim</code></td>
@@ -456,6 +482,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>Impact detection information</td>
 </tr>
 <tr>
+<td><code>homeLocation</code></td>
+<td><a href="#home-locations">HomeLocation</a></td>
+<td>Configured home location</td>
+</tr>
+<tr>
 <td><code>deviceStatus</code></td>
 <td><a href="#status">Status</a></td>
 <td>Rollup of all status fields</td>
@@ -466,14 +497,44 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>Rollup of location status fields</td>
 </tr>
 <tr>
+<td><code>deviceLocationDistanceStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Distance status based on configured distance outside from home location radius</td>
+</tr>
+<tr>
+<td><code>deviceLocationTimeStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Time status based on configured time outside home location radius</td>
+</tr>
+<tr>
 <td><code>deviceUtilisationStatus</code></td>
 <td><a href="#status">Status</a></td>
 <td>Rollup of utilisation status fields</td>
 </tr>
 <tr>
+<td><code>deviceUtilisationIdleStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Status of device if it is idle for more than the idle configuration threshold</td>
+</tr>
+<tr>
+<td><code>deviceUtilisationOutOfContactStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Status of device if it is out-of-contact for more than the out-of-contact configuration threshold</td>
+</tr>
+<tr>
 <td><code>deviceUserExperienceStatus</code></td>
 <td><a href="#status">Status</a></td>
 <td>Rollup of user experience status fields</td>
+</tr>
+<tr>
+<td><code>deviceUserExperienceRebootStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Status if reboot count is greater than the configured threshold</td>
+</tr>
+<tr>
+<td><code>deviceUserExperienceLowPowerStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Status if low power event count is greater than the configured threshold</td>
 </tr>
 </tbody></table>
 <h2 id='smart-batteries'>Smart Batteries</h2>
@@ -498,11 +559,12 @@ You must replace <code>your-api-token</code> with your personal API key.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"smartbatteries"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"partNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A7654"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"capacityFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.94</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batteryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"green"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zebra Technologies"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TC75x"</span><span class="w">
@@ -511,6 +573,7 @@ You must replace <code>your-api-token</code> with your personal API key.
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"partNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A8871"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"capacityFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.40</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"batteryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zebra Technologies"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TC75x"</span><span class="w">
@@ -564,6 +627,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The manufactured date as given by the battery</td>
 </tr>
 <tr>
+<td><code>batteryStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>Status based on the batteries health against configured thresholds</td>
+</tr>
+<tr>
 <td><code>updated</code></td>
 <td><a href="#timestamp">Timestamp</a></td>
 <td>When the smart battery last updated its information</td>
@@ -591,7 +659,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB-OX1"</span><span class="w"> </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB-RG17"</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -640,7 +708,181 @@ You must replace <code>your-api-token</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns the count of devices matched by the given query</p>
-<h1 id='filtering'>Filtering</h1>
+<h2 id='home-locations'>Home Locations</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">homeLocations</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">latitude</span><span class="w">
+      </span><span class="n">longitude</span><span class="w">
+      </span><span class="n">position</span><span class="w">
+      </span><span class="n">radius</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"homeLocations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"didcot"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didcot, Oxfordshire"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.608</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.2448</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.608, -1.2448"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"london"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.5074</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1278</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.5074, -0.1278"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"melbourne"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-37.8136</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">144.9631</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-37.8136, 144.9631"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns a list of configured home locations</p>
+<h3 id='available-fields-4'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Home location friendly name</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td><code>float</code></td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td><code>float</code></td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>gps point</code></td>
+<td>Concatenated latitude &amp; longitide. <code>51.61492, -1.311916</code></td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><code>number</code></td>
+<td>Radius around the gps point in meters that defines the boundary of the home location</td>
+</tr>
+</tbody></table>
+<h1 id='mutations'>Mutations</h1><h2 id='set-device-asset-tag'>Set Device Asset Tag</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">setDeviceAssetTag</span><span class="p">(</span><span class="n">assetTag</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXF-001"</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"1201eb5ed90647648ddf06a44d45d276"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">success</span><span class="w">
+    </span><span class="n">updated</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"setDeviceAssetTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Set the <code>assetTag</code> of a single device. If multiple devices are matched based on the filter the mutation will fail.</p>
+<h3 id='input-fields'>Input Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>assetTag</code></td>
+<td><code>string</code></td>
+<td>The asset tag string to be set on the device</td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><a href="#filter">Filter</a></td>
+<td>The query to run to find the device that is updated</td>
+</tr>
+</tbody></table>
+<h3 id='available-response-fields'>Available Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>Was the update successful</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td><code>boolean</code></td>
+<td>Was an update performed; this will be <code>false</code> if the given <code>assetTag</code> is the same</td>
+</tr>
+</tbody></table>
+<h1 id='filter'>Filter</h1><h2 id='input-fields'>Input Fields</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>field</code></td>
+<td><code>string</code></td>
+<td>Field name as defined in the object</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>string/[string]</code></td>
+<td>File value</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>Exact Match; get devices in the <code>group</code> <code>uk</code></p>
 </blockquote>
