@@ -6,11 +6,27 @@
 
 ```graphql
 query {
-  devices(limit: 2) {
+  devices(
+    limit: 2 
+    filter: { field: "deviceUserExperienceRebootStatus" value: "red" }
+    sort: { field: "updated" order: desc }) {
     nodes {
       model
       manufacturer
       averageDischarge
+      deviceUserExperienceRebootStatus
+      smartBattery {
+        serialNumber
+        capacityFactor
+        manufactureDate
+      }
+      location {
+        position
+        updated
+      }
+      sim {
+        serialNumber
+      }
     }
   }
 }
@@ -26,12 +42,38 @@ query {
         {
           "manufacturer": "Panasonic Corporation",
           "model": "FZ-G1",
-          "averageDischarge": 8.04
+          "averageDischarge": 8.04,
+          "deviceUserExperienceRebootStatus": "red",
+          "smartBattery": {
+            "serialNumber": "00937482B",
+            "capacityFactory": 0.95
+            "manufactureDate": "2018-01-05"
+          },
+          "location": {
+            "position": "51.616181,-1.312273",
+            "updated": 1557988946000
+          },
+          "sim": {
+            "serialNumber": "164836990773694264"
+          }
         },
         {
           "manufacturer": "Panasonic Corporation",
           "model": "FZ-G1",
           "averageDischarge": 12.88
+          "deviceUserExperienceRebootStatus": "red",
+          "smartBattery": {
+            "serialNumber": "7843GJ3",
+            "capacityFactory": 0.8
+            "manufactureDate": "2017-06-02"
+          },
+          "location": {
+            "position": "51.526214,-0.079549",
+            "updated": 1557868921000
+          },
+          "sim": {
+            "serialNumber": "985476129846787128"
+          }
         }
       ]
     }
