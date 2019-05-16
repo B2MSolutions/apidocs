@@ -255,6 +255,12 @@
                   <li>
                     <a href="#set-device-asset-tag" class="toc-h2 toc-link" data-title="Set Device Asset Tag">Set Device Asset Tag</a>
                   </li>
+                  <li>
+                    <a href="#add-home-location" class="toc-h2 toc-link" data-title="Add Home Location">Add Home Location</a>
+                  </li>
+                  <li>
+                    <a href="#set-device-home-location" class="toc-h2 toc-link" data-title="Set Device Home Location">Set Device Home Location</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -365,11 +371,27 @@ You must replace <code>your-api-token</code> with your personal API key.
 <p><code>POST</code> https://api.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">devices</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="w">
+    </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceUserExperienceRebootStatus"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated"</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">model</span><span class="w">
       </span><span class="n">manufacturer</span><span class="w">
       </span><span class="n">averageDischarge</span><span class="w">
+      </span><span class="n">deviceUserExperienceRebootStatus</span><span class="w">
+      </span><span class="n">smartBattery</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">serialNumber</span><span class="w">
+        </span><span class="n">capacityFactor</span><span class="w">
+        </span><span class="n">manufactureDate</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">location</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">position</span><span class="w">
+        </span><span class="n">updated</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">sim</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -384,12 +406,38 @@ You must replace <code>your-api-token</code> with your personal API key.
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deviceUserExperienceRebootStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"smartBattery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00937482B"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w">
+            </span><span class="s2">"manufactureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-05"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.616181,-1.312273"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557988946000</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"sim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"164836990773694264"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
+          </span><span class="s2">"deviceUserExperienceRebootStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"smartBattery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7843GJ3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="s2">"manufactureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-02"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.526214,-0.079549"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1557868921000</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"sim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"985476129846787128"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -818,14 +866,14 @@ You must replace <code>your-api-token</code> with your personal API key.
 <p><code>POST</code> https://api.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">setDeviceAssetTag</span><span class="p">(</span><span class="n">assetTag</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXF-001"</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"1201eb5ed90647648ddf06a44d45d276"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">setDeviceAssetTag</span><span class="p">(</span><span class="n">assetTag</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXF-001"</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"serialNumber"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"4GH78UJ1"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">success</span><span class="w">
     </span><span class="n">updated</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above query returns JSON structured like this:</p>
+<p>The above mutation returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -872,7 +920,160 @@ You must replace <code>your-api-token</code> with your personal API key.
 <tr>
 <td><code>updated</code></td>
 <td><code>boolean</code></td>
-<td>Was an update performed; this will be <code>false</code> if the given <code>assetTag</code> is the same</td>
+<td>Was an update performed; this will be <code>false</code> if the given assetTag is the same</td>
+</tr>
+</tbody></table>
+<h2 id='add-home-location'>Add Home Location</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createHomeLocation</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHR-W1"</span><span class="w">
+    </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heathrow Warehouse 1"</span><span class="w">
+    </span><span class="n">latitude</span><span class="p">:</span><span class="w"> </span><span class="mf">51.470020</span><span class="w">
+    </span><span class="n">longitude</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.454296</span><span class="w">
+    </span><span class="n">radius</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+  </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">success</span><span class="w">
+    </span><span class="n">homeLocation</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">position</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above mutation returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"createHomeLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"homeLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHR-W1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.470020,-0.454296"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Add a <a href="#home-locations">HomeLocation</a> to Elemez for use with location metrics on a device.</p>
+<h3 id='input-fields-2'>Input Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>The unique id to reference this homelocation by</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Friendly name</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td><code>float</code></td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td><code>float</code></td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><code>number</code></td>
+<td>The radius from the center point denoting the boundary of the homelocation</td>
+</tr>
+</tbody></table>
+<h3 id='available-response-fields-2'>Available Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>Was the update successful</td>
+</tr>
+<tr>
+<td><code>homeLocation</code></td>
+<td><a href="#home-locations">HomeLocation</a></td>
+<td>Home Location</td>
+</tr>
+</tbody></table>
+<h2 id='set-device-home-location'>Set Device Home Location</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">setDeviceHomeLocation</span><span class="p">(</span><span class="w">
+  </span><span class="n">homeLocationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHR-W1"</span><span class="w">
+  </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a20525fc89c"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">success</span><span class="w">
+    </span><span class="n">updated</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above mutation returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"setDeviceAssetTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Set the <a href="#home-location">HomeLocation</a> on an individual device</p>
+<h3 id='input-fields-3'>Input Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>filter</code></td>
+<td><a href="#filter">Filter</a></td>
+<td>Filter to location the individual device</td>
+</tr>
+<tr>
+<td><code>homeLocationId</code></td>
+<td><code>string</code></td>
+<td>The <code>id</code> of the HomeLocation</td>
+</tr>
+</tbody></table>
+<h3 id='available-response-fields-3'>Available Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>Was the update successful</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td><code>boolean</code></td>
+<td>Was an update performed; this will be <code>false</code> if the given assetTag is the same</td>
 </tr>
 </tbody></table>
 <h1 id='filter'>Filter</h1><h2 id='input-fields'>Input Fields</h2>
