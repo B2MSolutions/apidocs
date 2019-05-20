@@ -11,6 +11,7 @@ includes:
   - filtering
   - types
   - scenarios
+  - changelog
 
 search: true
 ---
