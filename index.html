@@ -270,6 +270,9 @@
                     <a href="#input-fields" class="toc-h2 toc-link" data-title="Input Fields">Input Fields</a>
                   </li>
                   <li>
+                    <a href="#custom-fields" class="toc-h2 toc-link" data-title="Custom Fields">Custom Fields</a>
+                  </li>
+                  <li>
                     <a href="#equal" class="toc-h2 toc-link" data-title="EQUAL"><code>EQUAL</code></a>
                   </li>
                   <li>
@@ -309,6 +312,9 @@
                   </li>
                   <li>
                     <a href="#operator" class="toc-h2 toc-link" data-title="Operator">Operator</a>
+                  </li>
+                  <li>
+                    <a href="#custom-fields" class="toc-h2 toc-link" data-title="Custom Fields">Custom Fields</a>
                   </li>
               </ul>
           </li>
@@ -556,6 +562,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td><code>homeLocation</code></td>
 <td><a href="#home-locations">HomeLocation</a></td>
 <td>Configured home location</td>
+</tr>
+<tr>
+<td><code>customFields</code></td>
+<td><a href="#custom-fields">CustomFields</a></td>
+<td>Custom field processing</td>
 </tr>
 <tr>
 <td><code>deviceStatus</code></td>
@@ -1111,7 +1122,30 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>Operator value</td>
 </tr>
 </tbody></table>
-<h2 id='equal'><code>EQUAL</code></h2>
+<h2 id='custom-fields'>Custom Fields</h2>
+<blockquote>
+<p>All devices where <code>Joan Smith</code> is the <code>lastKnownUser</code>, ordered by mos</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+  </span><span class="n">devices</span><span class="p">(</span><span class="w">
+    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"customFields[lastKnownUser].value"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joan Smith"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"customFields[lastKnownUser].updated"</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+      </span><span class="n">model</span><span class="w">
+      </span><span class="n">group</span><span class="w">
+      </span><span class="n">homeLocation</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">position</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">location</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">position</span><span class="w">
+        </span><span class="n">utc</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='equal'><code>EQUAL</code></h2>
 <blockquote>
 <p>Exact Match; get devices in the <code>group</code> <code>uk</code></p>
 </blockquote>
@@ -1362,6 +1396,30 @@ You must replace <code>your-api-token</code> with your personal API key.
 <tr>
 <td><code>not_gte</code></td>
 <td>Not greater than or equal</td>
+</tr>
+</tbody></table>
+<h2 id='custom-fields'>Custom Fields</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Name</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>`string\</td>
+<td>number`</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>Last updated time of the metric</td>
 </tr>
 </tbody></table>
 <h1 id='scenarios'>Scenarios</h1><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2>
