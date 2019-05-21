@@ -6,6 +6,7 @@
 - Multiple smart batteries on [Devices](#devices)
 - Set/Get Home Locations
 - Set device asset tags
+- Custom Fields
 
 ## Q4 2018
 - Device queries

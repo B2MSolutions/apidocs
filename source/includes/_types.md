@@ -65,3 +65,10 @@ Elemez status value returned as `red` `yellow` `green`
 | `not_lte` | Not less than or equal    |
 | `not_gt`  | Not greater than          |
 | `not_gte` | Not greater than or equal |
+
+## Custom Fields
+| Field     | Type                    | Description                     |
+|-----------|-------------------------|---------------------------------|
+| `name`    | `string`                | Name                            |
+| `value`   | `string\|number`        | Value                           |
+| `updated` | [Timestamp](#timestamp) | Last updated time of the metric |

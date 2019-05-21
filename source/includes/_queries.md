@@ -103,6 +103,7 @@ query {
 | `batteryDischarge`                    | [DeviceDischarge](#devicedischarge)  | Battery discharge information                                                                     |
 | `impactDetection`                     | [ImpactDetection](#impactdetection)  | Impact detection information                                                                      |
 | `homeLocation`                        | [HomeLocation](#home-locations)      | Configured home location                                                                          |
+| `customFields`                        | [CustomFields](#custom-fields)       | Custom field processing                                                                           |
 | `deviceStatus`                        | [Status](#status)                    | Rollup of all status fields                                                                       |
 | `deviceLocationStatus`                | [Status](#status)                    | Rollup of location status fields                                                                  |
 | `deviceLocationDistanceStatus`        | [Status](#status)                    | Distance status based on configured distance outside from home location radius                    |

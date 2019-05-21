@@ -7,6 +7,32 @@
 | `value`    | `string/[string]`     | Field value                         |
 | `operator` | [Operator](#operator) | Operator value                      |
 
+## Custom Fields
+
+> All devices where `Joan Smith` is the `lastKnownUser`, ordered by mos
+
+```graphql
+{
+  devices(
+    filter: { field: "customFields[lastKnownUser].value" value: "Joan Smith" }
+    sort: { field: "customFields[lastKnownUser].updated" order: desc }
+  ) {
+    nodes {
+      serialNumber
+      model
+      group
+      homeLocation {
+        position
+      }
+      location {
+        position
+        utc
+      }
+    }
+  }
+}
+```
+
 ## `EQUAL`
 
 > Exact Match; get devices in the `group` `uk`
