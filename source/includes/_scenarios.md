@@ -26,7 +26,7 @@ query {
     nodes {
       serialNumber
       impactDetection {
-        lastOccurence
+        lastOccurrence
         count
       }
     }

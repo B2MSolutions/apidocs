@@ -35,7 +35,7 @@ Elemez status value returned as `red` `yellow` `green`
 | Field            | Type                                    | Description                                 |
 | -----            | ----                                    | -----------                                 |
 | `count`          | `number`                                | Total number of drops                       |
-| `lastOccurence`  | [Timestamp](#timestamp)                 | Last occurence of a drop or forceful impact |
+| `lastOccurrence`  | [Timestamp](#timestamp)                 | Last occurrence of a drop or forceful impact |
 | `drops`          | [ImpactInformation](#impactinformation) | Information on the drop count               |
 | `forcefulImpact` | [ImpactInformation](#impactinformation) | Information on forceful impacts             |
 
@@ -44,7 +44,7 @@ Elemez status value returned as `red` `yellow` `green`
 | Field           | Type                    | Description              |
 | -----           | ----                    | -----------              |
 | `count`         | `number`                | Total number detected    |
-| `lastOccurence` | [Timestamp](#timestamp) | Last occurence timestamp |
+| `lastOccurrence` | [Timestamp](#timestamp) | Last occurrence timestamp |
 
 ## PageInfo
 | Field         | Type      | Description                                                    |
