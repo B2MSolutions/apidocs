@@ -239,10 +239,16 @@
                     <a href="#smart-batteries" class="toc-h2 toc-link" data-title="Smart Batteries">Smart Batteries</a>
                   </li>
                   <li>
+                    <a href="#custom-events" class="toc-h2 toc-link" data-title="Custom Events">Custom Events</a>
+                  </li>
+                  <li>
                     <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
                   </li>
                   <li>
                     <a href="#device-stats" class="toc-h2 toc-link" data-title="Device Stats">Device Stats</a>
+                  </li>
+                  <li>
+                    <a href="#smart-battery-stats" class="toc-h2 toc-link" data-title="Smart Battery Stats">Smart Battery Stats</a>
                   </li>
                   <li>
                     <a href="#home-locations" class="toc-h2 toc-link" data-title="Home Locations">Home Locations</a>
@@ -316,6 +322,12 @@
                   <li>
                     <a href="#custom-fields" class="toc-h2 toc-link" data-title="Custom Fields">Custom Fields</a>
                   </li>
+                  <li>
+                    <a href="#custom-event-field" class="toc-h2 toc-link" data-title="Custom Event Field">Custom Event Field</a>
+                  </li>
+                  <li>
+                    <a href="#device-info" class="toc-h2 toc-link" data-title="Device Info">Device Info</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -323,9 +335,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-devices-within-gps-coordinates" class="toc-h2 toc-link" data-title="Get devices within GPS coordinates">Get devices within GPS coordinates</a>
-                  </li>
-                  <li>
-                    <a href="#get-devices-dropped-more-than-50-times" class="toc-h2 toc-link" data-title="Get Devices dropped more than 50 times">Get Devices dropped more than 50 times</a>
                   </li>
                   <li>
                     <a href="#list-devices-with-pagination" class="toc-h2 toc-link" data-title="List devices with pagination">List devices with pagination</a>
@@ -376,12 +385,13 @@ If you are unfamiliar with this type of API we recommend following the link to t
 <h1 id='authentication'>Authentication</h1>
 <p>Elemez uses API keys to allow access to the API. You can find your personal API token from the World Settings in the <a href="https://elemez.com/world/settings">Elemez Portal</a></p>
 
-<p>Elemez expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Elemez expects for the API key and X API Key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code>token: your-api-token</code></p>
+<p><code>token: your-api-token</code><br>
+<code>x-api-key: your-x-api-key</code></p>
 
 <aside class="notice">
-You must replace <code>your-api-token</code> with your personal API key.
+You must replace <code>your-api-token/your-x-api-token</code> with your personal API keys.
 </aside>
 <h1 id='queries'>Queries</h1><h2 id='devices'>Devices</h2>
 <blockquote>
@@ -390,13 +400,13 @@ You must replace <code>your-api-token</code> with your personal API key.
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="w">
     </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
-    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceUserExperienceRebootStatus"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceStatus"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w"> </span><span class="p">}</span><span class="w">
     </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated"</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">model</span><span class="w">
       </span><span class="n">manufacturer</span><span class="w">
       </span><span class="n">averageDischarge</span><span class="w">
-      </span><span class="n">deviceUserExperienceRebootStatus</span><span class="w">
+      </span><span class="n">deviceStatus</span><span class="w">
       </span><span class="n">smartBattery</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">serialNumber</span><span class="w">
         </span><span class="n">capacityFactor</span><span class="w">
@@ -424,7 +434,7 @@ You must replace <code>your-api-token</code> with your personal API key.
           </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.04</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"deviceUserExperienceRebootStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deviceStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"smartBattery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00937482B"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w">
@@ -442,7 +452,7 @@ You must replace <code>your-api-token</code> with your personal API key.
           </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
-          </span><span class="s2">"deviceUserExperienceRebootStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deviceStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"smartBattery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7843GJ3"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
@@ -529,6 +539,11 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The average discharge over the last 30 days</td>
 </tr>
 <tr>
+<td><code>averageDischargeStatus</code></td>
+<td><a href="#status">Status</a></td>
+<td>The average discharge status</td>
+</tr>
+<tr>
 <td><code>location</code></td>
 <td><a href="#gps">GPS</a></td>
 <td>Last known location of the device</td>
@@ -554,11 +569,6 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>Battery discharge information</td>
 </tr>
 <tr>
-<td><code>impactDetection</code></td>
-<td><a href="#impactdetection">ImpactDetection</a></td>
-<td>Impact detection information</td>
-</tr>
-<tr>
 <td><code>homeLocation</code></td>
 <td><a href="#home-locations">HomeLocation</a></td>
 <td>Configured home location</td>
@@ -572,51 +582,6 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td><code>deviceStatus</code></td>
 <td><a href="#status">Status</a></td>
 <td>Rollup of all status fields</td>
-</tr>
-<tr>
-<td><code>deviceLocationStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of location status fields</td>
-</tr>
-<tr>
-<td><code>deviceLocationDistanceStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Distance status based on configured distance outside from home location radius</td>
-</tr>
-<tr>
-<td><code>deviceLocationTimeStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Time status based on configured time outside home location radius</td>
-</tr>
-<tr>
-<td><code>deviceUtilisationStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of utilisation status fields</td>
-</tr>
-<tr>
-<td><code>deviceUtilisationIdleStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Status of device if it is idle for more than the idle configuration threshold</td>
-</tr>
-<tr>
-<td><code>deviceUtilisationOutOfContactStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Status of device if it is out-of-contact for more than the out-of-contact configuration threshold</td>
-</tr>
-<tr>
-<td><code>deviceUserExperienceStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Rollup of user experience status fields</td>
-</tr>
-<tr>
-<td><code>deviceUserExperienceRebootStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Status if reboot count is greater than the configured threshold</td>
-</tr>
-<tr>
-<td><code>deviceUserExperienceLowPowerStatus</code></td>
-<td><a href="#status">Status</a></td>
-<td>Status if low power event count is greater than the configured threshold</td>
 </tr>
 </tbody></table>
 <h2 id='smart-batteries'>Smart Batteries</h2>
@@ -724,14 +689,133 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>The device associated with the smart battery</td>
 </tr>
 </tbody></table>
+<h2 id='custom-events'>Custom Events</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">customEvents</span><span class="p">(</span><span class="w">
+    </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"boot_time"</span><span class="w"> </span><span class="p">})</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">utc</span><span class="w">
+    </span><span class="n">device</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">serialNumber</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">customFields</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">value</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"customEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1563173408750"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JKU876556G"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"customFields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bootDuration"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99522"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1563141948679"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"998JUHY765"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"customFields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bootDuration"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99422"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='available-fields-3'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>unique device identifier</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>Event source</td>
+</tr>
+<tr>
+<td><code>sender</code></td>
+<td><code>string</code></td>
+<td>Event sender</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Event type</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Event name</td>
+</tr>
+<tr>
+<td><code>utc</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>When the event was created</td>
+</tr>
+<tr>
+<td><code>received</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>When Elemez received the event</td>
+</tr>
+<tr>
+<td><code>raised</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>When the event was raised on the device</td>
+</tr>
+<tr>
+<td><code>deviceInfo</code></td>
+<td><a href="#device-info">DeviceInfo</a></td>
+<td>Searchable &amp; sortable device information</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td><a href="#device">Device</a></td>
+<td>The associated device</td>
+</tr>
+<tr>
+<td><code>customFields</code></td>
+<td><a href="#custom-event-field">CustomEventField</a></td>
+<td>Custom fields associated with the event</td>
+</tr>
+</tbody></table>
 <h2 id='groups'>Groups</h2>
 <blockquote>
 <p><code>POST</code> https://api.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">deviceStats</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">groups</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">count</span><span class="w">
+      </span><span class="n">name</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -750,7 +834,7 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='available-fields-3'>Available Fields</h3>
+</span></code></pre></div><h3 id='available-fields-4'>Available Fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -769,7 +853,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 <p><code>POST</code> https://api.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">deviceStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">devicesStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">count</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -781,7 +865,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"deviceStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"devicesStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w"> </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12861</span><span class="w"> </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -790,6 +874,60 @@ You must replace <code>your-api-token</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns the count of devices matched by the given query</p>
+<h3 id='available-fields-5'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>Count of matched records</td>
+</tr>
+</tbody></table>
+<h2 id='smart-battery-stats'>Smart Battery Stats</h2>
+<blockquote>
+<p><code>POST</code> https://api.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">smartBatteriesStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">count</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"smartBatteriesStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12861</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns the count of devices matched by the given query</p>
+<h3 id='available-fields-6'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>Count of matched records</td>
+</tr>
+</tbody></table>
 <h2 id='home-locations'>Home Locations</h2>
 <blockquote>
 <p><code>POST</code> https://api.elemez.com/graphql</p>
@@ -844,7 +982,7 @@ You must replace <code>your-api-token</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns a list of configured home locations</p>
-<h3 id='available-fields-4'>Available Fields</h3>
+<h3 id='available-fields-7'>Available Fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1306,11 +1444,6 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td><a href="#impactinformation">ImpactInformation</a></td>
 <td>Information on the drop count</td>
 </tr>
-<tr>
-<td><code>forcefulImpact</code></td>
-<td><a href="#impactinformation">ImpactInformation</a></td>
-<td>Information on forceful impacts</td>
-</tr>
 </tbody></table>
 <h2 id='impactinformation'>ImpactInformation</h2>
 <table><thead>
@@ -1422,6 +1555,64 @@ You must replace <code>your-api-token</code> with your personal API key.
 <td>Last updated time of the metric</td>
 </tr>
 </tbody></table>
+<h2 id='custom-event-field'>Custom Event Field</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Custom event field name</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>any</code></td>
+<td>Custom event value</td>
+</tr>
+</tbody></table>
+<h2 id='device-info'>Device Info</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>serialNumber</code></td>
+<td><code>string</code></td>
+<td>Devices Serial Number</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td><code>string</code></td>
+<td>Model numbel</td>
+</tr>
+<tr>
+<td><code>manufacturer</code></td>
+<td><code>string</code></td>
+<td>Manufacturer name</td>
+</tr>
+<tr>
+<td><code>assetTag</code></td>
+<td><code>string</code></td>
+<td>Asset tag</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><code>[string]</code></td>
+<td>Array of group names the device currently belongs to</td>
+</tr>
+<tr>
+<td><code>homeLocationId</code></td>
+<td><code>string</code></td>
+<td>Configured home location Id</td>
+</tr>
+</tbody></table>
 <h1 id='scenarios'>Scenarios</h1><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2>
 <blockquote>
 <p>Devices within 100 meters of GPS Point <code>51.667789, -1.310762</code></p>
@@ -1431,21 +1622,6 @@ You must replace <code>your-api-token</code> with your personal API key.
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">serialNumber</span><span class="w">
       </span><span class="n">group</span><span class="w"> 
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='get-devices-dropped-more-than-50-times'>Get Devices dropped more than 50 times</h2>
-<blockquote>
-<p>Devices with total drop count more than 50, ordered by drop count descending</p>
-</blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">devices</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"impactDetection.count"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gt</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"impactDetection.count"</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">desc</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">serialNumber</span><span class="w">
-      </span><span class="n">impactDetection</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">lastOccurrence</span><span class="w">
-        </span><span class="n">count</span><span class="w">
-      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
