@@ -43,10 +43,11 @@ For our legacy REST api please visit [http://docs.elemez.com](http://docs.elemez
 
 Elemez uses API keys to allow access to the API. You can find your personal API token from the World Settings in the [Elemez Portal](https://elemez.com/world/settings)
 
-Elemez expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Elemez expects for the API key and X API Key to be included in all API requests to the server in a header that looks like the following:
 
-`token: your-api-token`
+`token: your-api-token`  
+`x-api-key: your-x-api-key`
 
 <aside class="notice">
-You must replace <code>your-api-token</code> with your personal API key.
+You must replace <code>your-api-token/your-x-api-token</code> with your personal API keys.
 </aside>

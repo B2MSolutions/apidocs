@@ -32,12 +32,11 @@ Elemez status value returned as `red` `yellow` `green`
 
 ## ImpactDetection
 
-| Field            | Type                                    | Description                                 |
-| -----            | ----                                    | -----------                                 |
-| `count`          | `number`                                | Total number of drops                       |
-| `lastOccurrence`  | [Timestamp](#timestamp)                 | Last occurrence of a drop or forceful impact |
-| `drops`          | [ImpactInformation](#impactinformation) | Information on the drop count               |
-| `forcefulImpact` | [ImpactInformation](#impactinformation) | Information on forceful impacts             |
+| Field            | Type                                    | Description                                  |
+| -----            | ----                                    | -----------                                  |
+| `count`          | `number`                                | Total number of drops                        |
+| `lastOccurrence` | [Timestamp](#timestamp)                 | Last occurrence of a drop or forceful impact |
+| `drops`          | [ImpactInformation](#impactinformation) | Information on the drop count                |
 
 
 ## ImpactInformation
@@ -72,3 +71,19 @@ Elemez status value returned as `red` `yellow` `green`
 | `name`    | `string`                | Name                            |
 | `value`   | `string\|number`        | Value                           |
 | `updated` | [Timestamp](#timestamp) | Last updated time of the metric |
+
+## Custom Event Field
+| Field   | Type     | Description             |
+| --      | --       | --                      |
+| `name`  | `string` | Custom event field name |
+| `value` | `any`    | Custom event value      |
+
+## Device Info
+| Field            | Type       | Description                                          |
+| ---------------- | ---------- | ---------------------------------------------------- |
+| `serialNumber`   | `string`   | Devices Serial Number                                |
+| `model`          | `string`   | Model numbel                                         |
+| `manufacturer`   | `string`   | Manufacturer name                                    |
+| `assetTag`       | `string`   | Asset tag                                            |
+| `group`          | `[string]` | Array of group names the device currently belongs to |
+| `homeLocationId` | `string`   | Configured home location Id                          |

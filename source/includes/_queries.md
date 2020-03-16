@@ -8,13 +8,13 @@
 query {
   devices(
     limit: 2 
-    filter: { field: "deviceUserExperienceRebootStatus" value: "red" }
+    filter: { field: "deviceStatus" value: "red" }
     sort: { field: "updated" order: desc }) {
     nodes {
       model
       manufacturer
       averageDischarge
-      deviceUserExperienceRebootStatus
+      deviceStatus
       smartBattery {
         serialNumber
         capacityFactor
@@ -43,7 +43,7 @@ query {
           "manufacturer": "Panasonic Corporation",
           "model": "FZ-G1",
           "averageDischarge": 8.04,
-          "deviceUserExperienceRebootStatus": "red",
+          "deviceStatus": "red",
           "smartBattery": {
             "serialNumber": "00937482B",
             "capacityFactory": 0.95
@@ -61,7 +61,7 @@ query {
           "manufacturer": "Panasonic Corporation",
           "model": "FZ-G1",
           "averageDischarge": 12.88
-          "deviceUserExperienceRebootStatus": "red",
+          "deviceStatus": "red",
           "smartBattery": {
             "serialNumber": "7843GJ3",
             "capacityFactory": 0.8
@@ -96,24 +96,15 @@ query {
 | `clientVersion`                       | `number`                             | Elemez agent version code                                                                         |
 | `group`                               | `[string]`                           | Array of group names the device currently belongs to                                              |
 | `averageDischarge`                    | `float`                              | The average discharge over the last 30 days                                                       |
+| `averageDischargeStatus`              | [Status](#status)                    | The average discharge status                                                                      |
 | `location`                            | [GPS](#gps)                          | Last known location of the device                                                                 |
 | `smartBattery`                        | [SmartBattery](#smart-batteries)     | First smart battery's information                                                                 |
 | `smartBatteries`                      | \[[SmartBattery](#smart-batteries)\] | All available smart battery information                                                           |
 | `sim`                                 | [Sim](#sim)                          | Sim card details                                                                                  |
 | `batteryDischarge`                    | [DeviceDischarge](#devicedischarge)  | Battery discharge information                                                                     |
-| `impactDetection`                     | [ImpactDetection](#impactdetection)  | Impact detection information                                                                      |
 | `homeLocation`                        | [HomeLocation](#home-locations)      | Configured home location                                                                          |
 | `customFields`                        | [CustomFields](#custom-fields)       | Custom field processing                                                                           |
 | `deviceStatus`                        | [Status](#status)                    | Rollup of all status fields                                                                       |
-| `deviceLocationStatus`                | [Status](#status)                    | Rollup of location status fields                                                                  |
-| `deviceLocationDistanceStatus`        | [Status](#status)                    | Distance status based on configured distance outside from home location radius                    |
-| `deviceLocationTimeStatus`            | [Status](#status)                    | Time status based on configured time outside home location radius                                 |
-| `deviceUtilisationStatus`             | [Status](#status)                    | Rollup of utilisation status fields                                                               |
-| `deviceUtilisationIdleStatus`         | [Status](#status)                    | Status of device if it is idle for more than the idle configuration threshold                     |
-| `deviceUtilisationOutOfContactStatus` | [Status](#status)                    | Status of device if it is out-of-contact for more than the out-of-contact configuration threshold |
-| `deviceUserExperienceStatus`          | [Status](#status)                    | Rollup of user experience status fields                                                           |
-| `deviceUserExperienceRebootStatus`    | [Status](#status)                    | Status if reboot count is greater than the configured threshold                                   |
-| `deviceUserExperienceLowPowerStatus`  | [Status](#status)                    | Status if low power event count is greater than the configured threshold                          |
 
 ## Smart Batteries
 
@@ -179,15 +170,89 @@ query {
 | `updated`         | [Timestamp](#timestamp) | When the smart battery last updated its information                |
 | `device`          | [Device](#devices)      | The device associated with the smart battery                       |
 
+## Custom Events
+
+> `POST` https://api.elemez.com/graphql
+
+```graphql
+query {
+  customEvents(
+    limit: 2 
+    filter: { field: "name" value: "boot_time" })
+    nodes {
+    utc
+    device {
+      serialNumber
+    }
+    customFields {
+      name
+      value
+    }
+  }
+}
+```
+
+> The above query returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "customEvents": {
+      "nodes": [
+        {
+          "utc": "1563173408750",
+          "device": {
+            "serialNumber": "JKU876556G"
+          },
+          "customFields": [
+            {
+              "name": "bootDuration",
+              "value": "99522"
+            }
+          ]
+        },
+        {
+          "utc": "1563141948679",
+          "device": {
+            "serialNumber": "998JUHY765"
+          },
+          "customFields": [
+            {
+              "name": "bootDuration",
+              "value": "99422"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+### Available Fields
+| Field          | Type                                    | Description                              |
+| ---------      | --------                                | -----------                              |
+| `id`           | `string`                                | unique device identifier                 |
+| `source`       | `string`                                | Event source                             |
+| `sender`       | `string`                                | Event sender                             |
+| `type`         | `string`                                | Event type                               |
+| `name`         | `string`                                | Event name                               |
+| `utc`          | [Timestamp](#timestamp)                 | When the event was created               |
+| `received`     | [Timestamp](#timestamp)                 | When Elemez received the event           |
+| `raised`       | [Timestamp](#timestamp)                 | When the event was raised on the device  |
+| `deviceInfo`   | [DeviceInfo](#device-info)               | Searchable & sortable device information |
+| `device`       | [Device](#device)                       | The associated device                    |
+| `customFields` | [CustomEventField](#custom-event-field) | Custom fields associated with the event  |
+
 ## Groups
 
 > `POST` https://api.elemez.com/graphql
 
 ```graphql
 query {
-  deviceStats {
+  groups {
     nodes {
-      count
+      name
     }
   }
 }
@@ -220,7 +285,7 @@ query {
 
 ```graphql
 query {
-  deviceStats(filter: { field: "group" value: "Oxfordshire" }) {
+  devicesStats(filter: { field: "group" value: "Oxfordshire" }) {
     nodes {
       count
     }
@@ -233,7 +298,7 @@ query {
 ```json
 {
   "data": {
-    "deviceStats": {
+    "devicesStats": {
       "nodes": [
         { "count": 12861 }
       ]
@@ -244,6 +309,45 @@ query {
 
 Returns the count of devices matched by the given query
 
+### Available Fields
+| Field   | Type     | Description              |
+| -----   | ----     | -----------              |
+| `count` | `number` | Count of matched records |
+
+## Smart Battery Stats
+
+> `POST` https://api.elemez.com/graphql
+
+```graphql
+query {
+  smartBatteriesStats(filter: { field: "deviceInfo.group" value: "Oxfordshire" }) {
+    nodes {
+      count
+    }
+  }
+}
+```
+
+> The above query returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "smartBatteriesStats": {
+      "nodes": [
+        { "count": 12861 }
+      ]
+    }
+  }
+}
+```
+
+Returns the count of devices matched by the given query
+
+### Available Fields
+| Field   | Type     | Description              |
+| -----   | ----     | -----------              |
+| `count` | `number` | Count of matched records |
 
 ## Home Locations
 > `POST` https://api.elemez.com/graphql

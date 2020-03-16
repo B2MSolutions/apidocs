@@ -16,24 +16,6 @@ query {
 }
 ```
 
-## Get Devices dropped more than 50 times
-
-> Devices with total drop count more than 50, ordered by drop count descending
-
-```graphql
-query {
-  devices(filter: { field: "impactDetection.count" value: 50 operator: gt } sort: { field: "impactDetection.count" order: desc}) {
-    nodes {
-      serialNumber
-      impactDetection {
-        lastOccurrence
-        count
-      }
-    }
-  }
-}
-```
-
 ## List devices with pagination
 Request the first & second page of devices
 
