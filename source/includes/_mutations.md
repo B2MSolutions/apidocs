@@ -2,7 +2,7 @@
 
 ## Set Device Asset Tag
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 mutation {
@@ -42,7 +42,7 @@ Set the `assetTag` of a single device. If multiple devices are matched based on 
 
 ## Add Home Location
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 mutation {
@@ -98,7 +98,7 @@ Add a [HomeLocation](#home-locations) to Elemez for use with location metrics on
 
 ## Set Device Home Location
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 mutation {

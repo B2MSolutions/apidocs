@@ -21,7 +21,7 @@ search: true
 > **API endpoint**
 
 ```
-https://api.elemez.com/graphql
+https://graph.elemez.com/graphql
 ```
 
 > All queries executed against the api are sent as `POST` requests.  
@@ -37,7 +37,7 @@ For our legacy REST api please visit [http://docs.elemez.com](http://docs.elemez
 
 ## HTTP Request Endpoint
 
-`POST https://api.elemez.com/graphql`
+`POST https://graph.elemez.com/graphql`
 
 # Authentication
 

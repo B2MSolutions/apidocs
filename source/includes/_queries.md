@@ -2,7 +2,7 @@
 
 ## Devices
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {
@@ -108,7 +108,7 @@ query {
 
 ## Smart Batteries
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {
@@ -172,7 +172,7 @@ query {
 
 ## Custom Events
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {
@@ -246,7 +246,7 @@ query {
 
 ## Groups
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {
@@ -281,7 +281,7 @@ query {
 
 ## Device Stats
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {
@@ -316,7 +316,7 @@ Returns the count of devices matched by the given query
 
 ## Smart Battery Stats
 
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {
@@ -350,7 +350,7 @@ Returns the count of devices matched by the given query
 | `count` | `number` | Count of matched records |
 
 ## Home Locations
-> `POST` https://api.elemez.com/graphql
+> `POST` https://graph.elemez.com/graphql
 
 ```graphql
 query {

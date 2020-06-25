@@ -13,3 +13,6 @@
 - Smart Battery queries
 - Group queries
 - Device count aggreations via [DeviceStats](#device-stats)
+
+## 2020 June
+- Smart Battery aggregations via []()
