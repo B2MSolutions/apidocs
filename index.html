@@ -353,6 +353,9 @@
                   <li>
                     <a href="#q4-2018" class="toc-h2 toc-link" data-title="Q4 2018">Q4 2018</a>
                   </li>
+                  <li>
+                    <a href="#2020-june" class="toc-h2 toc-link" data-title="2020 June">2020 June</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -367,7 +370,7 @@
 <blockquote>
 <p><strong>API endpoint</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>https://api.elemez.com/graphql
+<div class="highlight"><pre class="highlight plaintext"><code>https://graph.elemez.com/graphql
 </code></pre></div>
 <blockquote>
 <p>All queries executed against the api are sent as <code>POST</code> requests.<br>
@@ -381,7 +384,7 @@ If you are unfamiliar with this type of API we recommend following the link to t
 <h3 id='legacy-rest-api'>Legacy REST API</h3>
 <p>For our legacy REST api please visit <a href="http://docs.elemez.com">http://docs.elemez.com</a> for details</p>
 <h2 id='http-request-endpoint'>HTTP Request Endpoint</h2>
-<p><code>POST https://api.elemez.com/graphql</code></p>
+<p><code>POST https://graph.elemez.com/graphql</code></p>
 <h1 id='authentication'>Authentication</h1>
 <p>Elemez uses API keys to allow access to the API. You can find your personal API token from the World Settings in the <a href="https://elemez.com/world/settings">Elemez Portal</a></p>
 
@@ -395,7 +398,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </aside>
 <h1 id='queries'>Queries</h1><h2 id='devices'>Devices</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="w">
@@ -586,7 +589,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='smart-batteries'>Smart Batteries</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">smartbatteries</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -691,7 +694,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='custom-events'>Custom Events</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">customEvents</span><span class="p">(</span><span class="w">
@@ -810,7 +813,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='groups'>Groups</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">groups</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -850,7 +853,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='device-stats'>Device Stats</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">devicesStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -890,7 +893,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='smart-battery-stats'>Smart Battery Stats</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">smartBatteriesStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -930,7 +933,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='home-locations'>Home Locations</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">homeLocations</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1023,7 +1026,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h1 id='mutations'>Mutations</h1><h2 id='set-device-asset-tag'>Set Device Asset Tag</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">setDeviceAssetTag</span><span class="p">(</span><span class="n">assetTag</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXF-001"</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"serialNumber"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"4GH78UJ1"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1085,7 +1088,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='add-home-location'>Add Home Location</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createHomeLocation</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1174,7 +1177,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </tbody></table>
 <h2 id='set-device-home-location'>Set Device Home Location</h2>
 <blockquote>
-<p><code>POST</code> https://api.elemez.com/graphql</p>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">setDeviceHomeLocation</span><span class="p">(</span><span class="w">
@@ -1726,6 +1729,10 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <li>Smart Battery queries</li>
 <li>Group queries</li>
 <li>Device count aggreations via <a href="#device-stats">DeviceStats</a></li>
+</ul>
+<h2 id='2020-june'>2020 June</h2>
+<ul>
+<li>Smart Battery aggregations via <a href="#"></a></li>
 </ul>
 
       </div>
