@@ -87,3 +87,11 @@ Elemez status value returned as `red` `yellow` `green`
 | `assetTag`       | `string`   | Asset tag                                            |
 | `group`          | `[string]` | Array of group names the device currently belongs to |
 | `homeLocationId` | `string`   | Configured home location Id                          |
+
+## Group Operation
+| Field     | Description                                                  |
+|-----------|--------------------------------------------------------------|
+| `add`     | Append the provided groups to the existing list of group     |
+| `remove`  | Remove the provided groups from the exisiting list of groups |
+| `clear`   | Remove all group - this ignores the `groups` string provided |
+| `replace` | Replace the existing groups with the provided set            |

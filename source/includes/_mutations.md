@@ -40,6 +40,51 @@ Set the `assetTag` of a single device. If multiple devices are matched based on 
 | `success` | `boolean` | Was the update successful                                                       |
 | `updated` | `boolean` | Was an update performed; this will be `false` if the given assetTag is the same |
 
+## Modify Device Groups
+
+> `POST` https://graph.elemez.com/graphql
+
+```graphql
+mutation {
+  setDeviceGroups(
+    filter: { field: "serialNumber" value: "SA78HY65" } 
+    groups: "uk,oxfordshire,oxford" 
+    operation: replace) 
+  {
+    success
+    updated
+  }
+}
+```
+
+> The above mutation returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "setDeviceGroups": {
+      "success": true,
+      "updated": true
+    }
+  }
+}
+```
+
+Add/Update/Clear/Replace Device groups.
+
+### Input Fields
+| Field       | Type                              | Description                                         |
+|-------------|-----------------------------------|-----------------------------------------------------|
+| `filter`    | [Filter](#filter)                 | The query to run to find the device that is updated |
+| `groups`    | `string`                          | A comma seperated list of groups                    |
+| `operation` | [GroupOperation](#group-operation) | The operation to execute                            |
+
+### Available Response Fields
+| Field     | Type      | Description                                                                     |
+|-----------|-----------|---------------------------------------------------------------------------------|
+| `success` | `boolean` | Was the update successful                                                       |
+| `updated` | `boolean` | Was an update performed; this will be `false` if the given assetTag is the same |
+
 ## Add Home Location
 
 > `POST` https://graph.elemez.com/graphql
@@ -90,10 +135,10 @@ Add a [HomeLocation](#home-locations) to Elemez for use with location metrics on
 | `radius`    | `number` | The radius from the center point denoting the boundary of the homelocation |
 
 ### Available Response Fields
-| Field          | Type                           | Description               |
-|----------------|--------------------------------|---------------------------|
-| `success`      | `boolean`                      | Was the update successful |
-| `homeLocation` | [HomeLocation](#home-locations) | Home Location            |
+| Field          | Type                            | Description               |
+|----------------|---------------------------------|---------------------------|
+| `success`      | `boolean`                       | Was the update successful |
+| `homeLocation` | [HomeLocation](#home-locations) | Home Location             |
 
 
 ## Set Device Home Location
