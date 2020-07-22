@@ -40,7 +40,7 @@ Set the `assetTag` of a single device. If multiple devices are matched based on 
 | `success` | `boolean` | Was the update successful                                                       |
 | `updated` | `boolean` | Was an update performed; this will be `false` if the given assetTag is the same |
 
-## Modify Device Groups
+## Set Device Groups
 
 > `POST` https://graph.elemez.com/graphql
 
