@@ -376,7 +376,7 @@ query {
       "nodes": [
         {
           "id": "didcot",
-          "name": "Didcot, Oxfordshire",
+          "name": "Didcot",
           "latitude": 51.608,
           "longitude": -1.2448,
           "position": "51.608, -1.2448",

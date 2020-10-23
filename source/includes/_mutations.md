@@ -92,7 +92,6 @@ Add/Update/Clear/Replace Device groups.
 ```graphql
 mutation {
   createHomeLocation(data: {
-    id: "LHR-W1"
     name: "Heathrow Warehouse 1"
     latitude: 51.470020
     longitude: -0.454296
@@ -115,7 +114,7 @@ mutation {
     "createHomeLocation": {
       "success": true,
       "homeLocation": {
-        "id": "LHR-W1",
+        "id": "heathrow warehouse 1",
         "position": "51.470020,-0.454296"
       }
     }
@@ -128,7 +127,6 @@ Add a [HomeLocation](#home-locations) to Elemez for use with location metrics on
 ### Input Fields
 | Field       | Type     | Description                                                                |
 |-------------|----------|----------------------------------------------------------------------------|
-| `id`        | `string` | The unique id to reference this homelocation by                            |
 | `name`      | `string` | Friendly name                                                              |
 | `latitude`  | `float`  | Latitude                                                                   |
 | `longitude` | `float`  | Longitude                                                                  |
@@ -148,7 +146,7 @@ Add a [HomeLocation](#home-locations) to Elemez for use with location metrics on
 ```graphql
 mutation {
   setDeviceHomeLocation(
-  homeLocationId: "LHR-W1"
+  homeLocationId: "heathrow warehouse 1"
   filter: { field: "id" value: "6a20525fc89c" }) {
     success
     updated
