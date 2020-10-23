@@ -963,7 +963,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
       </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"didcot"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didcot, Oxfordshire"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didcot"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.608</span><span class="p">,</span><span class="w">
           </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.2448</span><span class="p">,</span><span class="w">
           </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.608, -1.2448"</span><span class="p">,</span><span class="w">
@@ -1169,7 +1169,6 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createHomeLocation</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHR-W1"</span><span class="w">
     </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heathrow Warehouse 1"</span><span class="w">
     </span><span class="n">latitude</span><span class="p">:</span><span class="w"> </span><span class="mf">51.470020</span><span class="w">
     </span><span class="n">longitude</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.454296</span><span class="w">
@@ -1191,7 +1190,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
     </span><span class="s2">"createHomeLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"homeLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHR-W1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"heathrow warehouse 1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51.470020,-0.454296"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1207,11 +1206,6 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><code>string</code></td>
-<td>The unique id to reference this homelocation by</td>
-</tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
@@ -1258,7 +1252,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">setDeviceHomeLocation</span><span class="p">(</span><span class="w">
-  </span><span class="n">homeLocationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"LHR-W1"</span><span class="w">
+  </span><span class="n">homeLocationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"heathrow warehouse 1"</span><span class="w">
   </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a20525fc89c"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">success</span><span class="w">
     </span><span class="n">updated</span><span class="w">
