@@ -11,7 +11,6 @@ includes:
   - filtering
   - types
   - scenarios
-  - changelog
 
 search: true
 ---
@@ -31,9 +30,6 @@ Welcome to the Elemez API Documentation! You can use this API to fetch data from
 
 The API uses [GraphQL](https://graphql.org) syntax.  
 If you are unfamiliar with this type of API we recommend following the link to the [documentation](https://graphql.org).
-
-### Legacy REST API
-For our legacy REST api please visit [http://docs.elemez.com](http://docs.elemez.com) for details
 
 ## HTTP Request Endpoint
 
