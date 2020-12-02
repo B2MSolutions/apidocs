@@ -510,7 +510,7 @@ Returns a list of Events generated from a device
 | `deviceInfo`     | [DeviceInfo](#device-info)           | n/a                                                                  | n/a                                                   | Searchable & sortable device information  |
 | `local`          | [Timestamp](#timestamp)              | n/a                                                                  | n/a                                                   | Event generation time - Device local time |
 | `utc`            | [Timestamp](#timestamp)              | n/a                                                                  | n/a                                                   | Event generation time - UTC time          |
-| `appliationInfo` | [ApplicationInfo](#application-info) | `applicationInstalled` `applicationUpdated` `applicationUninstalled` | n/a                                                   | Application info                          |
+| `applicationInfo` | [ApplicationInfo](#application-info) | `applicationInstalled` `applicationUpdated` `applicationUninstalled` | n/a                                                   | Application info                          |
 | `oldBatteryInfo` | [BatteryInfo](#battery-info)         | `batteryChanged`                                                     | n/a                                                   | Removed battery information               |
 | `newBatteryInfo` | [BatteryInfo](#battery-info)         | `batteryChanged`                                                     | n/a                                                   | Inserted battery information              |
 
@@ -604,7 +604,7 @@ query {
 }
 ```
 
-Returns the counts per grouping provided.  
+Returns the counts per grouping provided.
 Eg: If a the standard [Device Events Stats](#device-events-stats) query returns `6` devices based on the query, the addition of the `group` parameter allows
 the counts to be grouped by this field.  
 In the examples case we have grouped by the `deviceInfo.serialNumber` field so you will receive the `deviceRebooted` count per `deviceInfo.serialNumber`.
