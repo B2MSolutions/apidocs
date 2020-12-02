@@ -95,3 +95,17 @@ Elemez status value returned as `red` `yellow` `green`
 | `remove`  | Remove the provided groups from the exisiting list of groups |
 | `clear`   | Remove all group - this ignores the `groups` string provided |
 | `replace` | Replace the existing groups with the provided set            |
+
+## Device Event Categories & Names
+| Category      | Names                                                                                  |
+| --            | --                                                                                     |
+| `application` | `applicationinstalled`, `applicationupdated`, `applicationuninstalled`                 |
+| `battery`     | `batterychanged`                                                                       |
+| `device`      | `devicerebooted`, `deviceonpower`, `deviceoffpower`, `devicelowpower`, `devicedropped` |
+| `time`        | `timeerror`, `timerecovery`                                                            |
+
+## Stats Keys
+| Field   | Type     | Description |
+| --      | --       | --          |
+| `name`  | `string` | Field name  |
+| `value` | `any`    | Field value |

@@ -415,3 +415,202 @@ Returns a list of configured home locations
 | `longitude` | `float`     | Longitude                                                                            |
 | `position`  | `gps point` | Concatenated latitude &amp; longitide. `51.61492, -1.311916`                         |
 | `radius`    | `number`    | Radius around the gps point in meters that defines the boundary of the home location |
+
+## Device Events
+> `POST` https://graph.elemez.com/graphql
+
+```graphql
+query {
+    deviceEvents(
+        filter: { field: "group" value: "Oxfordshire" }
+    ) {
+        nodes {
+            name
+            category
+            utc
+            local
+            deviceInfo {
+                id
+                serialNumber
+                assetTag
+                group
+                homeLocationId
+            }
+        }
+        applicationInfo {
+            name
+            version
+        }
+        oldBatteryInfo {
+            serialNumber
+        }
+        newBatteryInfo {
+            serialNumber
+        }
+    }
+}
+```
+
+
+> The above query returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "deviceEvents": {
+            "nodes": [
+                {
+                    "category": "application"
+                    "name": "applicationInstalled",
+                    "utc": 1605006049000,
+                    "local": 1604998849000,
+                    "deviceInfo": {
+                        "id": "8f138afdfde8fea7186dd2af006bb9d0",
+                        "serialNumber": "ABC123",
+                        "assetTag": "DLE9901",
+                        "group": [ "oxfordshire" ],
+                        "homeLocationId": "oxfordshire"
+                    },
+                    "applicationInfo": {
+                        "name": "Microsoft Teams",
+                        "version": "12.2.5.12222"
+                    }
+                },
+                {
+                    "category": "battery"
+                    "name": "batteryChanged",
+                    "utc": 1605006049000,
+                    "local": 1604998849000,
+                    "deviceInfo": {
+                        "id": "8f138afdfde8fea7186dd2af006bb9d0",
+                        "serialNumber": "ABC123",
+                        "assetTag": "DLE9901",
+                        "group": [ "oxfordshire" ],
+                        "homeLocationId": "oxfordshire"
+                    },
+                    "oldBatteryInfo": {
+                        "serialNumber": "JJD99877"
+                    },
+                    "newBatteryInfo": {
+                        "serialNumber": "XXP99921"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+Returns a list of Events generated from a device
+
+| Field            | Type                                 | Related Event Name                                                   | values                                                | Description                               |
+| --               | --                                   | -                                                                    | -                                                     | -                                         |
+| `category`       | `string`                             | n/a                                                                  | [EventCategories](#device-event-categories-amp-names) | A top level category for the event        |
+| `name`           | `string`                             | n/a                                                                  | [EventNames](#device-event-categories-amp-names)      | Event name                                |
+| `deviceInfo`     | [DeviceInfo](#device-info)           | n/a                                                                  | n/a                                                   | Searchable & sortable device information  |
+| `local`          | [Timestamp](#timestamp)              | n/a                                                                  | n/a                                                   | Event generation time - Device local time |
+| `utc`            | [Timestamp](#timestamp)              | n/a                                                                  | n/a                                                   | Event generation time - UTC time          |
+| `appliationInfo` | [ApplicationInfo](#application-info) | `applicationInstalled` `applicationUpdated` `applicationUninstalled` | n/a                                                   | Application info                          |
+| `oldBatteryInfo` | [BatteryInfo](#battery-info)         | `batteryChanged`                                                     | n/a                                                   | Removed battery information               |
+| `newBatteryInfo` | [BatteryInfo](#battery-info)         | `batteryChanged`                                                     | n/a                                                   | Inserted battery information              |
+
+
+## Device Events Stats
+> `POST` https://graph.elemez.com/graphql
+
+```graphql
+query {
+    deviceEventsStats(filter: [
+        { field: "name" value: "deviceRebooted" }
+        { field: "local" value: "1606241092000" operator: gte }
+    ]
+    ) {
+        count
+    }
+}
+```
+
+> The above query returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "deviceEventsStats": {
+            "nodes": [
+                { "count": 6 }
+            ]
+        }
+    }
+}
+```
+
+Returns the count of events matched by the given query.
+See [Device Events Stats Grouped](#device-events-stats-grouped) for more advanced usage of [Device Events](#device-events).
+
+### Available Fields
+| Field   | Type     | Description              |
+| -----   | ----     | -----------              |
+| `count` | `number` | Count of matched records |
+
+
+## Device Events Stats Grouped
+> `POST` https://graph.elemez.com/graphql
+
+```graphql
+query {
+    deviceEventsStats(filter: [
+        { field: "name" value: "deviceRebooted" }
+        { field: "local" value: "1606241092000" operator: gte }
+    ]
+    group: { field: "deviceInfo.serialNumber" }
+    ) {
+        count
+        keys {
+            field
+            value
+        }
+    }
+}
+```
+
+> The above query returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "deviceEventsStats": {
+            "nodes": [
+                {
+                    "count": 2,
+                    "keys": [
+                        {
+                            "field": "deviceInfo.serialNumber",
+                            "value": "887hgd53dd"
+                        }
+                    ]
+                },
+                {
+                    "count": 4,
+                    "keys": [
+                        {
+                            "field": "deviceInfo.serialNumber",
+                            "value": "2932peor3"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+Returns the counts per grouping provided.  
+Eg: If a the standard [Device Events Stats](#device-events-stats) query returns `6` devices based on the query, the addition of the `group` parameter allows
+the counts to be grouped by this field.  
+In the examples case we have grouped by the `deviceInfo.serialNumber` field so you will receive the `deviceRebooted` count per `deviceInfo.serialNumber`.
+
+### Available Fields
+| Field   | Type                | Description                 |
+| -----   | ----                | -----------                 |
+| `count` | `number`            | Count of matched records    |
+| `keys`  | [Keys](#stats-keys) | Event Stats Grouping values |
