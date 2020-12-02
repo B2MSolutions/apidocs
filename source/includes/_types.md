@@ -104,8 +104,19 @@ Elemez status value returned as `red` `yellow` `green`
 | `device`      | `devicerebooted`, `deviceonpower`, `deviceoffpower`, `devicelowpower`, `devicedropped` |
 | `time`        | `timeerror`, `timerecovery`                                                            |
 
+## Application Info
+| Field     | Type     | Description         |
+|-----------|----------|---------------------|
+| `name`    | `string` | Application name    |
+| `version` | `string` | Application version |
+
+## Battery Info
+| Field          | Type     | Description           |
+|----------------|----------|-----------------------|
+| `serialNumber` | `string` | Battery serial number |
+
 ## Stats Keys
 | Field   | Type     | Description |
-| --      | --       | --          |
+|---------|----------|-------------|
 | `name`  | `string` | Field name  |
 | `value` | `any`    | Field value |
