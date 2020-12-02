@@ -1161,7 +1161,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <td>Event generation time - UTC time</td>
 </tr>
 <tr>
-<td><code>appliationInfo</code></td>
+<td><code>applicationInfo</code></td>
 <td><a href="#application-info">ApplicationInfo</a></td>
 <td><code>applicationInstalled</code> <code>applicationUpdated</code> <code>applicationUninstalled</code></td>
 <td>n/a</td>
@@ -1274,7 +1274,7 @@ See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for m
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Returns the counts per grouping provided.<br>
+<p>Returns the counts per grouping provided.
 Eg: If a the standard <a href="#device-events-stats">Device Events Stats</a> query returns <code>6</code> devices based on the query, the addition of the <code>group</code> parameter allows
 the counts to be grouped by this field.<br>
 In the examples case we have grouped by the <code>deviceInfo.serialNumber</code> field so you will receive the <code>deviceRebooted</code> count per <code>deviceInfo.serialNumber</code>.</p>
