@@ -250,6 +250,15 @@
                   <li>
                     <a href="#home-locations" class="toc-h2 toc-link" data-title="Home Locations">Home Locations</a>
                   </li>
+                  <li>
+                    <a href="#device-events" class="toc-h2 toc-link" data-title="Device Events">Device Events</a>
+                  </li>
+                  <li>
+                    <a href="#device-events-stats" class="toc-h2 toc-link" data-title="Device Events Stats">Device Events Stats</a>
+                  </li>
+                  <li>
+                    <a href="#device-events-stats-grouped" class="toc-h2 toc-link" data-title="Device Events Stats Grouped">Device Events Stats Grouped</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -330,6 +339,12 @@
                   </li>
                   <li>
                     <a href="#group-operation" class="toc-h2 toc-link" data-title="Group Operation">Group Operation</a>
+                  </li>
+                  <li>
+                    <a href="#device-event-categories-amp-names" class="toc-h2 toc-link" data-title="Device Event Categories &amp; Names">Device Event Categories &amp; Names</a>
+                  </li>
+                  <li>
+                    <a href="#stats-keys" class="toc-h2 toc-link" data-title="Stats Keys">Stats Keys</a>
                   </li>
               </ul>
           </li>
@@ -1011,6 +1026,271 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <td>Radius around the gps point in meters that defines the boundary of the home location</td>
 </tr>
 </tbody></table>
+<h2 id='device-events'>Device Events</h2>
+<blockquote>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">deviceEvents</span><span class="p">(</span><span class="w">
+        </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oxfordshire"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">name</span><span class="w">
+            </span><span class="n">category</span><span class="w">
+            </span><span class="n">utc</span><span class="w">
+            </span><span class="n">local</span><span class="w">
+            </span><span class="n">deviceInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">id</span><span class="w">
+                </span><span class="n">serialNumber</span><span class="w">
+                </span><span class="n">assetTag</span><span class="w">
+                </span><span class="n">group</span><span class="w">
+                </span><span class="n">homeLocationId</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">applicationInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">name</span><span class="w">
+            </span><span class="n">version</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">oldBatteryInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">serialNumber</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">newBatteryInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">serialNumber</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"deviceEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application"</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applicationInstalled"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605006049000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"local"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604998849000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f138afdfde8fea7186dd2af006bb9d0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC123"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assetTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLE9901"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"oxfordshire"</span><span class="w"> </span><span class="p">],</span><span class="w">
+                        </span><span class="s2">"homeLocationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oxfordshire"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"applicationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft Teams"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.2.5.12222"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery"</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batteryChanged"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605006049000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"local"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604998849000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f138afdfde8fea7186dd2af006bb9d0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC123"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"assetTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLE9901"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"oxfordshire"</span><span class="w"> </span><span class="p">],</span><span class="w">
+                        </span><span class="s2">"homeLocationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oxfordshire"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"oldBatteryInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJD99877"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"newBatteryInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXP99921"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns a list of Events generated from a device</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Related Event Name</th>
+<th>values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>n/a</td>
+<td><a href="#device-event-categories-amp-names">EventCategories</a></td>
+<td>A top level category for the event</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>n/a</td>
+<td><a href="#device-event-categories-amp-names">EventNames</a></td>
+<td>Event name</td>
+</tr>
+<tr>
+<td><code>deviceInfo</code></td>
+<td><a href="#device-info">DeviceInfo</a></td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Searchable &amp; sortable device information</td>
+</tr>
+<tr>
+<td><code>local</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Event generation time - Device local time</td>
+</tr>
+<tr>
+<td><code>utc</code></td>
+<td><a href="#timestamp">Timestamp</a></td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Event generation time - UTC time</td>
+</tr>
+<tr>
+<td><code>appliationInfo</code></td>
+<td><a href="#application-info">ApplicationInfo</a></td>
+<td><code>applicationInstalled</code> <code>applicationUpdated</code> <code>applicationUninstalled</code></td>
+<td>n/a</td>
+<td>Application info</td>
+</tr>
+<tr>
+<td><code>oldBatteryInfo</code></td>
+<td><a href="#battery-info">BatteryInfo</a></td>
+<td><code>batteryChanged</code></td>
+<td>n/a</td>
+<td>Removed battery information</td>
+</tr>
+<tr>
+<td><code>newBatteryInfo</code></td>
+<td><a href="#battery-info">BatteryInfo</a></td>
+<td><code>batteryChanged</code></td>
+<td>n/a</td>
+<td>Inserted battery information</td>
+</tr>
+</tbody></table>
+<h2 id='device-events-stats'>Device Events Stats</h2>
+<blockquote>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">deviceEventsStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceRebooted"</span><span class="w"> </span><span class="p">}</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"local"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606241092000"</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gte</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">count</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"deviceEventsStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w"> </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns the count of events matched by the given query.
+See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for more advanced usage of <a href="#device-events">Device Events</a>.</p>
+<h3 id='available-fields-8'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>Count of matched records</td>
+</tr>
+</tbody></table>
+<h2 id='device-events-stats-grouped'>Device Events Stats Grouped</h2>
+<blockquote>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">deviceEventsStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceRebooted"</span><span class="w"> </span><span class="p">}</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"local"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606241092000"</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gte</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="n">group</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">count</span><span class="w">
+        </span><span class="n">keys</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">field</span><span class="w">
+            </span><span class="n">value</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"deviceEventsStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"887hgd53dd"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2932peor3"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns the counts per grouping provided.<br>
+Eg: If a the standard <a href="#device-events-stats">Device Events Stats</a> query returns <code>6</code> devices based on the query, the addition of the <code>group</code> parameter allows
+the counts to be grouped by this field.<br>
+In the examples case we have grouped by the <code>deviceInfo.serialNumber</code> field so you will receive the <code>deviceRebooted</code> count per <code>deviceInfo.serialNumber</code>.</p>
+<h3 id='available-fields-9'>Available Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>Count of matched records</td>
+</tr>
+<tr>
+<td><code>keys</code></td>
+<td><a href="#stats-keys">Keys</a></td>
+<td>Event Stats Grouping values</td>
+</tr>
+</tbody></table>
 <h1 id='mutations'>Mutations</h1><h2 id='set-device-asset-tag'>Set Device Asset Tag</h2>
 <blockquote>
 <p><code>POST</code> https://graph.elemez.com/graphql</p>
@@ -1690,6 +1970,49 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <tr>
 <td><code>replace</code></td>
 <td>Replace the existing groups with the provided set</td>
+</tr>
+</tbody></table>
+<h2 id='device-event-categories-amp-names'>Device Event Categories &amp; Names</h2>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Names</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>application</code></td>
+<td><code>applicationinstalled</code>, <code>applicationupdated</code>, <code>applicationuninstalled</code></td>
+</tr>
+<tr>
+<td><code>battery</code></td>
+<td><code>batterychanged</code></td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td><code>devicerebooted</code>, <code>deviceonpower</code>, <code>deviceoffpower</code>, <code>devicelowpower</code>, <code>devicedropped</code></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><code>timeerror</code>, <code>timerecovery</code></td>
+</tr>
+</tbody></table>
+<h2 id='stats-keys'>Stats Keys</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Field name</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>any</code></td>
+<td>Field value</td>
 </tr>
 </tbody></table>
 <h1 id='scenarios'>Scenarios</h1><h2 id='get-devices-within-gps-coordinates'>Get devices within GPS coordinates</h2>
