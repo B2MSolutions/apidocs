@@ -561,8 +561,11 @@ query {
     deviceEventsStats(filter: [
         { field: "name" value: "deviceRebooted" }
         { field: "local" value: "1606241092000" operator: gte }
-    ]
-    group: { field: "deviceInfo.serialNumber" }
+      ]
+    group: [
+        { field: "deviceInfo.serialNumber" }
+        { field: "deviceInfo.group" }
+      ]
     ) {
         count
         keys {
@@ -586,6 +589,10 @@ query {
                         {
                             "field": "deviceInfo.serialNumber",
                             "value": "887hgd53dd"
+                        },
+                        {
+                            "field": "deviceInfo.group",
+                            "value": "warehouse"
                         }
                     ]
                 },
@@ -595,6 +602,10 @@ query {
                         {
                             "field": "deviceInfo.serialNumber",
                             "value": "2932peor3"
+                        },
+                        {
+                            "field": "deviceInfo.group",
+                            "value": "warehouse"
                         }
                     ]
                 }
@@ -607,7 +618,10 @@ query {
 Returns the counts per grouping provided.
 Eg: If a the standard [Device Events Stats](#device-events-stats) query returns `6` devices based on the query, the addition of the `group` parameter allows
 the counts to be grouped by this field.  
-In the examples case we have grouped by the `deviceInfo.serialNumber` field so you will receive the `deviceRebooted` count per `deviceInfo.serialNumber`.
+
+In the examples case we have grouped by the `deviceInfo.serialNumber` and `deviceInfo.group` field so you will receive the `deviceRebooted` count per `deviceInfo.serialNumber` and `deviceInfo.group`.
+
+Grouping is limited to 2 `group` definitions.
 
 ### Available Fields
 | Field   | Type                | Description                 |
