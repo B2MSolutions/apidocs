@@ -1233,8 +1233,11 @@ See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for m
     </span><span class="n">deviceEventsStats</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceRebooted"</span><span class="w"> </span><span class="p">}</span><span class="w">
         </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"local"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606241092000"</span><span class="w"> </span><span class="n">operator</span><span class="p">:</span><span class="w"> </span><span class="n">gte</span><span class="w"> </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-    </span><span class="n">group</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="n">group</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="w"> </span><span class="p">}</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.group"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">count</span><span class="w">
         </span><span class="n">keys</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1257,6 +1260,10 @@ See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for m
                         </span><span class="p">{</span><span class="w">
                             </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="p">,</span><span class="w">
                             </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"887hgd53dd"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.group"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warehouse"</span><span class="w">
                         </span><span class="p">}</span><span class="w">
                     </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -1266,6 +1273,10 @@ See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for m
                         </span><span class="p">{</span><span class="w">
                             </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.serialNumber"</span><span class="p">,</span><span class="w">
                             </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2932peor3"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceInfo.group"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warehouse"</span><span class="w">
                         </span><span class="p">}</span><span class="w">
                     </span><span class="p">]</span><span class="w">
                 </span><span class="p">}</span><span class="w">
@@ -1276,8 +1287,11 @@ See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for m
 </span></code></pre></div>
 <p>Returns the counts per grouping provided.
 Eg: If a the standard <a href="#device-events-stats">Device Events Stats</a> query returns <code>6</code> devices based on the query, the addition of the <code>group</code> parameter allows
-the counts to be grouped by this field.<br>
-In the examples case we have grouped by the <code>deviceInfo.serialNumber</code> field so you will receive the <code>deviceRebooted</code> count per <code>deviceInfo.serialNumber</code>.</p>
+the counts to be grouped by this field.  </p>
+
+<p>In the examples case we have grouped by the <code>deviceInfo.serialNumber</code> and <code>deviceInfo.group</code> field so you will receive the <code>deviceRebooted</code> count per <code>deviceInfo.serialNumber</code> and <code>deviceInfo.group</code>.</p>
+
+<p>Grouping is limited to 2 <code>group</code> definitions.</p>
 <h3 id='available-fields-9'>Available Fields</h3>
 <table><thead>
 <tr>
