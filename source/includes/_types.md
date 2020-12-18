@@ -28,6 +28,8 @@ Elemez status value returned as `red` `yellow` `green`
 | Field          | Type              | Description                             |
 | -----          | ----              | -----------                             |
 | `serialNumber` | `string`          | The Sim card serial number              |
+| `operatorName` | `string`          | The Sim Operator Name              |
+| `operatorCode` | `string`          | The Sim Operator Code             |
 | `device`       | [Device](#device) | The device associated with the sim card |
 
 ## ImpactDetection
