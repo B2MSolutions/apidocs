@@ -93,6 +93,11 @@ Add/Update/Clear/Replace Device groups.
 mutation {
   createHomeLocation(data: {
     name: "Heathrow Warehouse 1"
+    addressLine1: "Heathrow Airport"
+    addressLine2: "Hounslow"
+    locality: "London"
+    postalCode: "TW6 1EW"
+    country: "United Kingdom"
     latitude: 51.470020
     longitude: -0.454296
     radius: 1000
@@ -125,12 +130,17 @@ mutation {
 Add a [HomeLocation](#home-locations) to Elemez for use with location metrics on a device.
 
 ### Input Fields
-| Field       | Type     | Description                                                                |
-|-------------|----------|----------------------------------------------------------------------------|
-| `name`      | `string` | Friendly name                                                              |
-| `latitude`  | `float`  | Latitude                                                                   |
-| `longitude` | `float`  | Longitude                                                                  |
-| `radius`    | `number` | The radius from the center point denoting the boundary of the homelocation |
+| Field          | Type     | Description                                                                |
+|----------------|----------|----------------------------------------------------------------------------|
+| `name`         | `string` | Friendly name                                                              |
+| `addressLine1` | `string` | Address line 1                                                             |
+| `addressLine2` | `string` | Address line 2                                                             |
+| `locality`     | `string` | Locality                                                                   |
+| `postalCode`   | `string` | Postal code                                                                |
+| `country`      | `string` | Country                                                                    |
+| `latitude`     | `float`  | Latitude                                                                   |
+| `longitude`    | `float`  | Longitude                                                                  |
+| `radius`       | `number` | The radius from the center point denoting the boundary of the homelocation |
 
 ### Available Response Fields
 | Field          | Type                            | Description               |
