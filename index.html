@@ -1451,6 +1451,11 @@ the counts to be grouped by this field.  </p>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createHomeLocation</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heathrow Warehouse 1"</span><span class="w">
+    </span><span class="n">addressLine1</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heathrow Airport"</span><span class="w">
+    </span><span class="n">addressLine2</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hounslow"</span><span class="w">
+    </span><span class="n">locality</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="w">
+    </span><span class="n">postalCode</span><span class="p">:</span><span class="w"> </span><span class="s2">"TW6 1EW"</span><span class="w">
+    </span><span class="n">country</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="w">
     </span><span class="n">latitude</span><span class="p">:</span><span class="w"> </span><span class="mf">51.470020</span><span class="w">
     </span><span class="n">longitude</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.454296</span><span class="w">
     </span><span class="n">radius</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
@@ -1491,6 +1496,31 @@ the counts to be grouped by this field.  </p>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>Friendly name</td>
+</tr>
+<tr>
+<td><code>addressLine1</code></td>
+<td><code>string</code></td>
+<td>Address line 1</td>
+</tr>
+<tr>
+<td><code>addressLine2</code></td>
+<td><code>string</code></td>
+<td>Address line 2</td>
+</tr>
+<tr>
+<td><code>locality</code></td>
+<td><code>string</code></td>
+<td>Locality</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td><code>string</code></td>
+<td>Postal code</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>Country</td>
 </tr>
 <tr>
 <td><code>latitude</code></td>
