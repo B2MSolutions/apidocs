@@ -7,7 +7,7 @@
 ```graphql
 query {
   devices(
-    limit: 2 
+    limit: 2
     filter: { field: "deviceStatus" value: "red" }
     sort: { field: "updated" order: desc }) {
     nodes {
@@ -46,7 +46,7 @@ query {
           "deviceStatus": "red",
           "smartBattery": {
             "serialNumber": "00937482B",
-            "capacityFactory": 0.95
+            "capacityFactory": 0.95,
             "manufactureDate": "2018-01-05"
           },
           "location": {
@@ -60,11 +60,11 @@ query {
         {
           "manufacturer": "Panasonic Corporation",
           "model": "FZ-G1",
-          "averageDischarge": 12.88
+          "averageDischarge": 12.88,
           "deviceStatus": "red",
           "smartBattery": {
             "serialNumber": "7843GJ3",
-            "capacityFactory": 0.8
+            "capacityFactory": 0.8,
             "manufactureDate": "2017-06-02"
           },
           "location": {
@@ -86,9 +86,9 @@ query {
 | ---------                             | --------                             | -----------                                                                                       |
 | `id`                                  | `string`                             | unique device identifier                                                                          |
 | `imei`                                | `string`                             | the IMEI                                                                                          |
-| `mac`                                 | `string`                             | Devics MAC Address                                                                                |
-| `serialNumber`                        | `string`                             | Devices Serial Number                                                                             |
-| `model`                               | `string`                             | Model numbel                                                                                      |
+| `mac`                                 | `string`                             | Device's MAC Address                                                                                |
+| `serialNumber`                        | `string`                             | Device's Serial Number                                                                             |
+| `model`                               | `string`                             | Model number                                                                                      |
 | `manufacturer`                        | `string`                             | Manufacturer name                                                                                 |
 | `assetTag`                            | `string`                             | Asset tag                                                                                         |
 | `updated`                             | [timestamp](#timestamp)              | Timestamp in milliseconds when device last send data                                              |
@@ -119,7 +119,7 @@ query {
       device {
         manufacturer
         model
-      } 
+      }
     }
   }
 }
@@ -177,7 +177,7 @@ query {
 ```graphql
 query {
   customEvents(
-    limit: 2 
+    limit: 2
     filter: { field: "name" value: "boot_time" })
     nodes {
     utc
@@ -413,7 +413,7 @@ Returns a list of configured home locations
 | `name`      | `string`    | Home location friendly name                                                          |
 | `latitude`  | `float`     | Latitude                                                                             |
 | `longitude` | `float`     | Longitude                                                                            |
-| `position`  | `gps point` | Concatenated latitude &amp; longitide. `51.61492, -1.311916`                         |
+| `position`  | `gps point` | Concatenated latitude &amp; longitude. `51.61492, -1.311916`                         |
 | `radius`    | `number`    | Radius around the gps point in meters that defines the boundary of the home location |
 
 ## Device Events
@@ -460,7 +460,7 @@ query {
         "deviceEvents": {
             "nodes": [
                 {
-                    "category": "application"
+                    "category": "application",
                     "name": "applicationInstalled",
                     "utc": 1605006049000,
                     "local": 1604998849000,
@@ -477,7 +477,7 @@ query {
                     }
                 },
                 {
-                    "category": "battery"
+                    "category": "battery",
                     "name": "batteryChanged",
                     "utc": 1605006049000,
                     "local": 1604998849000,
@@ -617,7 +617,7 @@ query {
 
 Returns the counts per grouping provided.
 Eg: If a the standard [Device Events Stats](#device-events-stats) query returns `6` devices based on the query, the addition of the `group` parameter allows
-the counts to be grouped by this field.  
+the counts to be grouped by this field.
 
 In the examples case we have grouped by the `deviceInfo.serialNumber` and `deviceInfo.group` field so you will receive the `deviceRebooted` count per `deviceInfo.serialNumber` and `deviceInfo.group`.
 

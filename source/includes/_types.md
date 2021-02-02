@@ -12,9 +12,9 @@ Elemez status value returned as `red` `yellow` `green`
 | -----       | ----                    | -----------                                                  |
 | `latitude`  | `float`                 | Latitude                                                     |
 | `longitude` | `float`                 | Longitude                                                    |
-| `position`  | `gps point`             | Concatenated latitude &amp; longitide. `51.61492, -1.311916` |
+| `position`  | `gps point`             | Concatenated latitude &amp; longitude. `51.61492, -1.311916` |
 | `accuracy`  | `number`                | Accuracy in meters of the given coordinates                  |
-| `time`      | [Timestamp](#timestamp) | When the GPS coordinates where collected                     |
+| `time`      | [Timestamp](#timestamp) | When the GPS coordinates were collected                     |
 | `source`    | `string`                | Method of collection eg: `gps` `cellular` `fused`            |
 | `utc`       | [Timestamp](#timestamp) | When the GPS coordinates were sent to the server             |
 
@@ -22,7 +22,7 @@ Elemez status value returned as `red` `yellow` `green`
 | Field     | Type     | Description                   |
 | -----     | ----     | -----------                   |
 | `date`    | `string` | `YYYY-MM-DD` date format      |
-| `average` | `number` | The devices average discharge |
+| `average` | `number` | The device's average discharge |
 
 ## Sim
 | Field          | Type              | Description                             |
@@ -83,8 +83,8 @@ Elemez status value returned as `red` `yellow` `green`
 ## Device Info
 | Field            | Type       | Description                                          |
 | ---------------- | ---------- | ---------------------------------------------------- |
-| `serialNumber`   | `string`   | Devices Serial Number                                |
-| `model`          | `string`   | Model numbel                                         |
+| `serialNumber`   | `string`   | Device's Serial Number                                |
+| `model`          | `string`   | Model number                                         |
 | `manufacturer`   | `string`   | Manufacturer name                                    |
 | `assetTag`       | `string`   | Asset tag                                            |
 | `group`          | `[string]` | Array of group names the device currently belongs to |
@@ -94,7 +94,7 @@ Elemez status value returned as `red` `yellow` `green`
 | Field     | Description                                                  |
 |-----------|--------------------------------------------------------------|
 | `add`     | Append the provided groups to the existing list of group     |
-| `remove`  | Remove the provided groups from the exisiting list of groups |
+| `remove`  | Remove the provided groups from the existing list of groups |
 | `clear`   | Remove all group - this ignores the `groups` string provided |
 | `replace` | Replace the existing groups with the provided set            |
 

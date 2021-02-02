@@ -47,9 +47,9 @@ Set the `assetTag` of a single device. If multiple devices are matched based on 
 ```graphql
 mutation {
   setDeviceGroups(
-    filter: { field: "serialNumber" value: "SA78HY65" } 
-    groups: "uk,oxfordshire,oxford" 
-    operation: replace) 
+    filter: { field: "serialNumber" value: "SA78HY65" }
+    groups: "uk,oxfordshire,oxford"
+    operation: replace)
   {
     success
     updated
@@ -76,7 +76,7 @@ Add/Update/Clear/Replace Device groups.
 | Field       | Type                              | Description                                         |
 |-------------|-----------------------------------|-----------------------------------------------------|
 | `filter`    | [Filter](#filter)                 | The query to run to find the device that is updated |
-| `groups`    | `string`                          | A comma seperated list of groups                    |
+| `groups`    | `string`                          | A comma separated list of groups                    |
 | `operation` | [GroupOperation](#group-operation) | The operation to execute                            |
 
 ### Available Response Fields
