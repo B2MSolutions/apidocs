@@ -83,7 +83,7 @@ Add/Update/Clear/Replace Device groups.
 | Field     | Type      | Description                                                                     |
 |-----------|-----------|---------------------------------------------------------------------------------|
 | `success` | `boolean` | Was the update successful                                                       |
-| `updated` | `boolean` | Was an update performed; this will be `false` if the given assetTag is the same |
+| `updated` | `boolean` | Was an update performed; this will be `false` if the groups are unchanged by the operation |
 
 ## Add Home Location
 
@@ -169,7 +169,7 @@ mutation {
 ```json
 {
   "data": {
-    "setDeviceAssetTag": {
+    "setDeviceHomeLocation": {
       "success": true,
       "updated": true
     }
@@ -189,8 +189,7 @@ Set the [HomeLocation](#home-location) on an individual device
 | Field     | Type      | Description                                                                     |
 |-----------|-----------|---------------------------------------------------------------------------------|
 | `success` | `boolean` | Was the update successful                                                       |
-| `updated` | `boolean` | Was an update performed; this will be `false` if the given assetTag is the same |
-
+| `updated` | `boolean` | Was an update performed; this will be `false` if the given homeLocation is the same |
 
 ## Delete Device
 
@@ -210,7 +209,7 @@ mutation {
 ```json
 {
   "data": {
-    "setDeviceAssetTag": {
+    "deleteDevice": {
       "success": true,
     }
   }
