@@ -169,7 +169,7 @@ mutation {
 ```json
 {
   "data": {
-    "setDeviceAssetTag": {
+    "setDeviceHomeLocation": {
       "success": true,
       "updated": true
     }
@@ -209,7 +209,7 @@ mutation {
 ```json
 {
   "data": {
-    "setDeviceAssetTag": {
+    "deleteDevice": {
       "success": true,
     }
   }
