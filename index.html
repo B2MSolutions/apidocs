@@ -276,6 +276,9 @@
                   <li>
                     <a href="#set-device-home-location" class="toc-h2 toc-link" data-title="Set Device Home Location">Set Device Home Location</a>
                   </li>
+                  <li>
+                    <a href="#delete-device" class="toc-h2 toc-link" data-title="Delete Device">Delete Device</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -410,7 +413,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">devices</span><span class="p">(</span><span class="w">
-    </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+    </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"deviceStatus"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w"> </span><span class="p">}</span><span class="w">
     </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated"</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -448,7 +451,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
           </span><span class="s2">"deviceStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"smartBattery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00937482B"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w">
+            </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufactureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-05"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -462,11 +465,11 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panasonic Corporation"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FZ-G1"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="w">
+          </span><span class="s2">"averageDischarge"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.88</span><span class="p">,</span><span class="w">
           </span><span class="s2">"deviceStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"smartBattery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7843GJ3"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="s2">"capacityFactory"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufactureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-02"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -502,17 +505,17 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <tr>
 <td><code>mac</code></td>
 <td><code>string</code></td>
-<td>Devics MAC Address</td>
+<td>Device&#39;s MAC Address</td>
 </tr>
 <tr>
 <td><code>serialNumber</code></td>
 <td><code>string</code></td>
-<td>Devices Serial Number</td>
+<td>Device&#39;s Serial Number</td>
 </tr>
 <tr>
 <td><code>model</code></td>
 <td><code>string</code></td>
-<td>Model numbel</td>
+<td>Model number</td>
 </tr>
 <tr>
 <td><code>manufacturer</code></td>
@@ -607,7 +610,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
       </span><span class="n">device</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">manufacturer</span><span class="w">
         </span><span class="n">model</span><span class="w">
-      </span><span class="p">}</span><span class="w"> 
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -706,7 +709,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">customEvents</span><span class="p">(</span><span class="w">
-    </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+    </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"boot_time"</span><span class="w"> </span><span class="p">})</span><span class="w">
     </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">utc</span><span class="w">
@@ -1024,7 +1027,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
 <tr>
 <td><code>position</code></td>
 <td><code>gps point</code></td>
-<td>Concatenated latitude &amp; longitide. <code>51.61492, -1.311916</code></td>
+<td>Concatenated latitude &amp; longitude. <code>51.61492, -1.311916</code></td>
 </tr>
 <tr>
 <td><code>radius</code></td>
@@ -1074,7 +1077,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
         </span><span class="s2">"deviceEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application"</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applicationInstalled"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605006049000</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"local"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604998849000</span><span class="p">,</span><span class="w">
@@ -1091,7 +1094,7 @@ You must replace <code>your-api-token/your-x-api-token</code> with your personal
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery"</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batteryChanged"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1605006049000</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"local"</span><span class="p">:</span><span class="w"> </span><span class="mi">1604998849000</span><span class="p">,</span><span class="w">
@@ -1287,7 +1290,7 @@ See <a href="#device-events-stats-grouped">Device Events Stats Grouped</a> for m
 </span></code></pre></div>
 <p>Returns the counts per grouping provided.
 Eg: If a the standard <a href="#device-events-stats">Device Events Stats</a> query returns <code>6</code> devices based on the query, the addition of the <code>group</code> parameter allows
-the counts to be grouped by this field.  </p>
+the counts to be grouped by this field.</p>
 
 <p>In the examples case we have grouped by the <code>deviceInfo.serialNumber</code> and <code>deviceInfo.group</code> field so you will receive the <code>deviceRebooted</code> count per <code>deviceInfo.serialNumber</code> and <code>deviceInfo.group</code>.</p>
 
@@ -1379,9 +1382,9 @@ the counts to be grouped by this field.  </p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">setDeviceGroups</span><span class="p">(</span><span class="w">
-    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"serialNumber"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"SA78HY65"</span><span class="w"> </span><span class="p">}</span><span class="w"> 
-    </span><span class="n">groups</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk,oxfordshire,oxford"</span><span class="w"> 
-    </span><span class="n">operation</span><span class="p">:</span><span class="w"> </span><span class="n">replace</span><span class="p">)</span><span class="w"> 
+    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"serialNumber"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"SA78HY65"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="n">groups</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk,oxfordshire,oxford"</span><span class="w">
+    </span><span class="n">operation</span><span class="p">:</span><span class="w"> </span><span class="n">replace</span><span class="p">)</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="n">success</span><span class="w">
     </span><span class="n">updated</span><span class="w">
@@ -1417,7 +1420,7 @@ the counts to be grouped by this field.  </p>
 <tr>
 <td><code>groups</code></td>
 <td><code>string</code></td>
-<td>A comma seperated list of groups</td>
+<td>A comma separated list of groups</td>
 </tr>
 <tr>
 <td><code>operation</code></td>
@@ -1621,6 +1624,57 @@ the counts to be grouped by this field.  </p>
 <td>Was an update performed; this will be <code>false</code> if the given assetTag is the same</td>
 </tr>
 </tbody></table>
+<h2 id='delete-device'>Delete Device</h2>
+<blockquote>
+<p><code>POST</code> https://graph.elemez.com/graphql</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteDevice</span><span class="p">(</span><span class="w">
+  </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">field</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a20525fc89c"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">success</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above mutation returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"setDeviceAssetTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Delete device</p>
+<h3 id='input-fields-5'>Input Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>filter</code></td>
+<td><a href="#filter">Filter</a></td>
+<td>Filter to location the individual device</td>
+</tr>
+</tbody></table>
+<h3 id='available-response-fields-5'>Available Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>Was the update successful</td>
+</tr>
+</tbody></table>
 <h1 id='filter'>Filter</h1><h2 id='input-fields'>Input Fields</h2>
 <table><thead>
 <tr>
@@ -1745,7 +1799,7 @@ the counts to be grouped by this field.  </p>
 <tr>
 <td><code>position</code></td>
 <td><code>gps point</code></td>
-<td>Concatenated latitude &amp; longitide. <code>51.61492, -1.311916</code></td>
+<td>Concatenated latitude &amp; longitude. <code>51.61492, -1.311916</code></td>
 </tr>
 <tr>
 <td><code>accuracy</code></td>
@@ -1755,7 +1809,7 @@ the counts to be grouped by this field.  </p>
 <tr>
 <td><code>time</code></td>
 <td><a href="#timestamp">Timestamp</a></td>
-<td>When the GPS coordinates where collected</td>
+<td>When the GPS coordinates were collected</td>
 </tr>
 <tr>
 <td><code>source</code></td>
@@ -1784,7 +1838,7 @@ the counts to be grouped by this field.  </p>
 <tr>
 <td><code>average</code></td>
 <td><code>number</code></td>
-<td>The devices average discharge</td>
+<td>The device&#39;s average discharge</td>
 </tr>
 </tbody></table>
 <h2 id='sim'>Sim</h2>
@@ -1980,12 +2034,12 @@ the counts to be grouped by this field.  </p>
 <tr>
 <td><code>serialNumber</code></td>
 <td><code>string</code></td>
-<td>Devices Serial Number</td>
+<td>Device&#39;s Serial Number</td>
 </tr>
 <tr>
 <td><code>model</code></td>
 <td><code>string</code></td>
-<td>Model numbel</td>
+<td>Model number</td>
 </tr>
 <tr>
 <td><code>manufacturer</code></td>
@@ -2021,7 +2075,7 @@ the counts to be grouped by this field.  </p>
 </tr>
 <tr>
 <td><code>remove</code></td>
-<td>Remove the provided groups from the exisiting list of groups</td>
+<td>Remove the provided groups from the existing list of groups</td>
 </tr>
 <tr>
 <td><code>clear</code></td>
