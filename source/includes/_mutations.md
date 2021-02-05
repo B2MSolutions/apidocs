@@ -190,3 +190,41 @@ Set the [HomeLocation](#home-location) on an individual device
 |-----------|-----------|---------------------------------------------------------------------------------|
 | `success` | `boolean` | Was the update successful                                                       |
 | `updated` | `boolean` | Was an update performed; this will be `false` if the given assetTag is the same |
+
+
+## Delete Device
+
+> `POST` https://graph.elemez.com/graphql
+
+```graphql
+mutation {
+  deleteDevice(
+  filter: { field: "id" value: "6a20525fc89c" }) {
+    success
+  }
+}
+```
+
+> The above mutation returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "setDeviceAssetTag": {
+      "success": true,
+    }
+  }
+}
+```
+
+Delete device
+
+### Input Fields
+| Field            | Type              | Description                              |
+|------------------|-------------------|------------------------------------------|
+| `filter`         | [Filter](#filter) | Filter to location the individual device |
+
+### Available Response Fields
+| Field     | Type      | Description                                                                     |
+|-----------|-----------|---------------------------------------------------------------------------------|
+| `success` | `boolean` | Was the update successful                                                       |
