@@ -1444,7 +1444,7 @@ the counts to be grouped by this field.</p>
 <tr>
 <td><code>updated</code></td>
 <td><code>boolean</code></td>
-<td>Was an update performed; this will be <code>false</code> if the given assetTag is the same</td>
+<td>Was an update performed; this will be <code>false</code> if the groups are unchanged by the operation</td>
 </tr>
 </tbody></table>
 <h2 id='add-home-location'>Add Home Location</h2>
@@ -1578,7 +1578,7 @@ the counts to be grouped by this field.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"setDeviceAssetTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"setDeviceHomeLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1621,7 +1621,7 @@ the counts to be grouped by this field.</p>
 <tr>
 <td><code>updated</code></td>
 <td><code>boolean</code></td>
-<td>Was an update performed; this will be <code>false</code> if the given assetTag is the same</td>
+<td>Was an update performed; this will be <code>false</code> if the given homeLocation is the same</td>
 </tr>
 </tbody></table>
 <h2 id='delete-device'>Delete Device</h2>
@@ -1640,7 +1640,7 @@ the counts to be grouped by this field.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"setDeviceAssetTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"deleteDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
